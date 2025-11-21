@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المهندس مشعل الرويلي | Mshal D.</title>
+    <meta name="google-site-verification" content="T4OYCfaWB7JLmxNt9xTrp1..." /> <title>المهندس مشعل الرويلي | Mshal D.</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-main: #e0e0e0;
             --text-muted: #b0b0b0;
-            --accent: #4caf50; /* أخضر تقني */
+            --accent: #4caf50;
             --accent-hover: #45a049;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +27,22 @@
             overflow-x: hidden;
         }
 
-        /* شريط التنقل */
+        /* أنميشن الظهور */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تطبيق الأنميشن على العناصر */
+        .hero, .blog-card, .split-col {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0; /* نبدأ مخفي عشان يظهر */
+        }
+        .hero { animation-delay: 0.2s; }
+        .split-container { animation-delay: 0.4s; }
+        .blog-section { animation-delay: 0.6s; }
+
+        /* الهيدر */
         header {
             background-color: rgba(18, 18, 18, 0.95);
             padding: 20px 0;
@@ -35,19 +53,14 @@
             backdrop-filter: blur(10px);
         }
         nav {
-            max-width: 1100px; /*  اللغة */
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 25px;
         }
-        .logo { 
-            font-weight: 900; 
-            font-size: 1.5em; 
-            color: var(--text-main); 
-            letter-spacing: 1px;
-        }
+        .logo { font-weight: 900; font-size: 1.5em; color: var(--text-main); letter-spacing: 1px; }
         .logo span { color: var(--accent); }
         
         .nav-links a {
@@ -56,24 +69,18 @@
             margin-left: 20px;
             font-weight: 700;
             transition: 0.3s;
-            font-size: 0.95em; /*  */
+            font-size: 0.95em;
         }
         .nav-links a:hover { color: var(--accent); }
 
-        /* القسم التعريفي (Hero) */
+        /* Hero Section */
         .hero {
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 25px;
             text-align: center;
         }
-
-        .hero h1 { 
-            font-size: 2.8em; 
-            margin-bottom: 15px; 
-            font-weight: 900;
-            margin-top: 20px; 
-        }
+        .hero h1 { font-size: 2.8em; margin-bottom: 15px; font-weight: 900; margin-top: 20px; }
         .hero .title-badge {
             background-color: rgba(76, 175, 80, 0.1);
             color: var(--accent);
@@ -82,11 +89,11 @@
             font-size: 0.9em;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 35px; 
+            margin-bottom: 35px;
             border: 1px solid var(--accent);
         }
         
-        /* تنسيق الحاوية المقسمة للغتين */
+        /* Split Text */
         .split-container {
             display: flex;
             flex-wrap: wrap;
@@ -94,7 +101,6 @@
             margin-top: 20px;
             text-align: right;
         }
-
         .split-col {
             flex: 1;
             min-width: 300px;
@@ -104,15 +110,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             font-size: 1.05em;
             color: var(--text-muted);
+            /* تأثير هوفر بسيط */
+            transition: transform 0.3s;
         }
+        .split-col:hover { transform: translateY(-5px); }
 
-        /* تنسيق العربي */
-        .ar-text {
-            border-right: 5px solid var(--accent);
-        }
+        .ar-text { border-right: 5px solid var(--accent); }
         .ar-text strong { color: var(--text-main); }
-
-        /* تنسيق الإنجليزي */
         .en-text {
             text-align: left;
             direction: ltr;
@@ -121,12 +125,8 @@
         }
         .en-text strong { color: var(--text-main); }
 
-        /* قسم المدونة */
-        .blog-section {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 0 25px;
-        }
+        /* Blog Section */
+        .blog-section { max-width: 1000px; margin: 80px auto; padding: 0 25px; }
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -135,21 +135,12 @@
             border-bottom: 1px solid #333;
             padding-bottom: 15px;
         }
-        /* تعديل العنوان ليكون ثنائي اللغة بشكل مرتب */
         .section-title { 
-            font-size: 1.6em; 
-            font-weight: 900; 
-            color: var(--text-main);
-            direction: ltr; /* عشان الانجليزي يجي يسار والعربي يمين */
-            text-align: right;
-            width: 100%;
+            font-size: 1.6em; font-weight: 900; color: var(--text-main);
+            direction: ltr; text-align: right; width: 100%;
         }
         
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .blog-card {
             background-color: var(--card-bg);
             padding: 25px;
@@ -160,29 +151,14 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .blog-card:hover { 
-            transform: translateY(-7px); 
-            border-color: var(--accent); 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-        .blog-meta { 
-            font-size: 0.85em; 
-            color: #666; 
-            margin-bottom: 15px; 
-            display: flex; 
-            justify-content: space-between;
-        }
+        .blog-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .blog-meta { font-size: 0.85em; color: #666; margin-bottom: 15px; display: flex; justify-content: space-between; }
         .blog-title { font-size: 1.3em; margin-bottom: 15px; font-weight: 700; line-height: 1.4; }
         .blog-excerpt { font-size: 0.95em; color: var(--text-muted); margin-bottom: 20px; }
-        .read-btn { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-weight: bold; 
-            align-self: flex-end;
-            transition: 0.2s;
-        }
+        .read-btn { color: var(--accent); text-decoration: none; font-weight: bold; align-self: flex-end; transition: 0.2s; }
         .read-btn:hover { color: #fff; }
 
+        /* Footer & Social Icons */
         footer {
             text-align: center;
             padding: 50px 0;
@@ -191,11 +167,19 @@
             margin-top: 60px;
             border-top: 1px solid #222;
         }
-        
+        .social-icons { margin-bottom: 20px; }
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.5em;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover { color: var(--accent); transform: scale(1.2); }
+
         @media (max-width: 768px) {
             .split-container { flex-direction: column; }
             .hero h1 { font-size: 2em; }
-            .nav-links a { margin-left: 15px; font-size: 0.8em; } /* تصغير الخط في الجوال */
+            .nav-links a { margin-left: 15px; font-size: 0.8em; }
         }
     </style>
     <meta name="google-site-verification" content="T4OYCfaWB7JLmxNi9xTrpZ7EEt6cufi3Nfp27awapY0" />
@@ -218,7 +202,6 @@
         <div class="title-badge">Electrical Engineer & Software Developer</div>
         
         <div class="split-container">
-            
             <div class="split-col ar-text">
                 <p>
                     أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
@@ -228,7 +211,6 @@
                     أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
                 </p>
             </div>
-
             <div class="split-col en-text">
                 <p>
                     I am <strong>Mshal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
@@ -238,7 +220,6 @@
                     I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
                 </p>
             </div>
-
         </div>
     </section>
 
@@ -247,7 +228,6 @@
             <h2 class="section-title">Latest Posts / أحدث التدوينات</h2>
         </div>
         <div class="blog-grid">
-            
             <div class="blog-card">
                 <div class="blog-meta"><span>November 21, 2025</span><span>Physics & Philosophy</span></div>
                 <div class="blog-title">The Duality of Light: Between Matter Particle and Probability Wave</div>
@@ -258,7 +238,6 @@
                 </div>
                 <a href="#" class="read-btn">Read More ←</a>
             </div>
-
             <div class="blog-card">
                 <div class="blog-meta"><span>21 نوفمبر 2025</span><span>فيزياء وفلسفة</span></div>
                 <div class="blog-title">ازدواجية الضوء: بين جسيم المادة وموجة الاحتمال</div>
@@ -269,16 +248,23 @@
                 </div>
                 <a href="#" class="read-btn">اقرأ المزيد ←</a>
             </div>
-
         </div>
     </section>
 
     <footer>
+        <div class="social-icons">
+            <a href="https://github.com/MshalAlruwaili" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/%D9%85%D8%B4%D8%B9%D9%84-%D8%A7%D9%84%D8%B1%D9%88%D9%8A%D9%84%D9%8A-6b3ab336a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+        
+        </div>
         <p>© 2025 Mshal D. AlRuwaili | Engineering & Code ⚡💻</p>
     </footer>
-
+<script>
+        // رسالة ترحيبية للمطورين في الكونسول
+        console.log("%c🛑 Wait!", "color: red; font-size: 40px; font-weight: bold; text-shadow: 2px 2px #000;");
+        console.log("%cYou are viewing the console of Engineer Mshal D.", "color: #4caf50; font-size: 16px; font-weight: bold;");
+        console.log("%cIf you are looking for a skilled developer/engineer, contact me.", "color: #e0e0e0; font-size: 14px;");
+        console.log("🐧 Linux User | ⚡ Electrical Engineer | 💻 Code Lover");
+    </script>
 </body>
-
 </html>
-
-
