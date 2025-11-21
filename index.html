@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهندس مشعل الرويلي | Mshal D.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --accent: #4caf50; /* أخضر تقني */
+            --accent-hover: #45a049;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* شريط التنقل */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav {
+            max-width: 1100px; /* وسعنا العرض شوي عشان القائمة ثنائية اللغة */
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+        .logo { 
+            font-weight: 900; 
+            font-size: 1.5em; 
+            color: var(--text-main); 
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--accent); }
+        
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 700;
+            transition: 0.3s;
+            font-size: 0.95em; /* صغرنا الخط شعرة عشان يكفي */
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* القسم التعريفي (Hero) */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 25px;
+            text-align: center;
+        }
+
+        .hero h1 { 
+            font-size: 2.8em; 
+            margin-bottom: 15px; 
+            font-weight: 900;
+            margin-top: 20px; 
+        }
+        .hero .title-badge {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 35px; 
+            border: 1px solid var(--accent);
+        }
+        
+        /* تنسيق الحاوية المقسمة للغتين */
+        .split-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .split-col {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 1.05em;
+            color: var(--text-muted);
+        }
+
+        /* تنسيق العربي */
+        .ar-text {
+            border-right: 5px solid var(--accent);
+        }
+        .ar-text strong { color: var(--text-main); }
+
+        /* تنسيق الإنجليزي */
+        .en-text {
+            text-align: left;
+            direction: ltr;
+            border-left: 5px solid var(--accent);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .en-text strong { color: var(--text-main); }
+
+        /* قسم المدونة */
+        .blog-section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 25px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+        /* تعديل العنوان ليكون ثنائي اللغة بشكل مرتب */
+        .section-title { 
+            font-size: 1.6em; 
+            font-weight: 900; 
+            color: var(--text-main);
+            direction: ltr; /* عشان الانجليزي يجي يسار والعربي يمين */
+            text-align: right;
+            width: 100%;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .blog-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .blog-card:hover { 
+            transform: translateY(-7px); 
+            border-color: var(--accent); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .blog-meta { 
+            font-size: 0.85em; 
+            color: #666; 
+            margin-bottom: 15px; 
+            display: flex; 
+            justify-content: space-between;
+        }
+        .blog-title { font-size: 1.3em; margin-bottom: 15px; font-weight: 700; line-height: 1.4; }
+        .blog-excerpt { font-size: 0.95em; color: var(--text-muted); margin-bottom: 20px; }
+        .read-btn { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-weight: bold; 
+            align-self: flex-end;
+            transition: 0.2s;
+        }
+        .read-btn:hover { color: #fff; }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+        
+        @media (max-width: 768px) {
+            .split-container { flex-direction: column; }
+            .hero h1 { font-size: 2em; }
+            .nav-links a { margin-left: 15px; font-size: 0.8em; } /* تصغير الخط في الجوال */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Mshal <span>D. AlRuwaili</span></div>
+            <div class="nav-links">
+                <a href="#">Home / الرئيسية</a>
+                <a href="#about">About / عني</a>
+                <a href="#blog">Blog / المدونة</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="about">
+        <h1>مشعل الرويلي</h1>
+        <div class="title-badge">Electrical Engineer & Software Developer</div>
+        
+        <div class="split-container">
+            
+            <div class="split-col ar-text">
+                <p>
+                    أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
+                    <br><br>
+                    أؤمن أن كل نظام – سواء كان كهربائيًا، رقميًا، أو كونيًا – يخضع لمنطق دقيق وعلاقات سببية مترابطة. اهتمامي لا يقف عند حدود التقنية، بل يمتد إلى <strong>الفضاء والفيزياء الكونية</strong>، حيث أجد في اتساع الكون ما يعكس تعقيد الأنظمة التي نعمل معها هنا على الأرض.
+                    <br><br>
+                    أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
+                </p>
+            </div>
+
+            <div class="split-col en-text">
+                <p>
+                    I am <strong>Mshal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
+                    <br><br>
+                    I believe that every system—whether electrical, digital, or cosmic—is governed by precise logic and interconnected causal relationships. My interest extends beyond the boundaries of technology to <strong>Space and Cosmic Physics</strong>, where I find in the vastness of the universe a reflection of the complexity of the systems we deal with here on Earth.
+                    <br><br>
+                    I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="blog-section" id="blog">
+        <div class="section-header">
+            <h2 class="section-title">Latest Posts / أحدث التدوينات</h2>
+        </div>
+        <div class="blog-grid">
+            
+            <div class="blog-card">
+                <div class="blog-meta"><span>November 21, 2025</span><span>Physics & Philosophy</span></div>
+                <div class="blog-title">The Duality of Light: Between Matter Particle and Probability Wave</div>
+                <div class="blog-excerpt">
+                    How can light be two contradictory entities at once? 
+                    A deep dive into the "Double-Slit Experiment," and how the mere act of "observation" collapses the photon from a wandering wave into a definite particle.
+                    Does the universe wait for us to observe it in order to take shape? Engineering inquiries into the depths of physics.
+                </div>
+                <a href="#" class="read-btn">Read More ←</a>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-meta"><span>21 نوفمبر 2025</span><span>فيزياء وفلسفة</span></div>
+                <div class="blog-title">ازدواجية الضوء: بين جسيم المادة وموجة الاحتمال</div>
+                <div class="blog-excerpt">
+                    كيف يمكن للضوء أن يكون شيئين متناقضين في آن واحد؟ 
+                    نظرة عميقة في "تجربة الشق المزدوج"، وكيف أن مجرد "المراقبة" يغير سلوك الفوتونات من موجة هائمة إلى جسيم محدد.
+                    هل الكون ينتظرنا لننظر إليه كي يتشكل؟ تساؤلات هندسية في عمق الفيزياء.
+                </div>
+                <a href="#" class="read-btn">اقرأ المزيد ←</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Mshal D. AlRuwaili | Engineering & Code ⚡💻</p>
+    </footer>
+
+</body>
+</html>
