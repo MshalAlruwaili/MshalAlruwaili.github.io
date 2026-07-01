@@ -11,7 +11,7 @@
     <meta name="keywords" content="Mshal AlRuwaili, Mshal D., Electrical Engineer, Software Developer, Engineer Saudi Arabia, Python, Java, GitHub Portfolio">
     <meta name="author" content="Mshal D. AlRuwaili">
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script type="application/ld+json">
@@ -31,13 +31,15 @@
 
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-muted: #b0b0b0;
-            --accent: #4caf50;
-            --accent-hover: #45a049;
+            --bg-color: #0F1419;
+            --card-bg: #161C24;
+            --text-main: #F4F6F8;
+            --text-muted: #919EAB;
+            --accent: #E6C64F;
+            --accent-dim: rgba(230, 198, 79, 0.1);
+            --border-color: #212B36;
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
@@ -49,12 +51,12 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero, .blog-card, .split-col {
-            animation: fadeUp 0.8s ease-out forwards;
+        .hero, .split-col, .blog-section {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0; 
         }
         .hero { animation-delay: 0.2s; }
@@ -62,13 +64,13 @@
         .blog-section { animation-delay: 0.6s; }
 
         header {
-            background-color: rgba(18, 18, 18, 0.95);
+            background-color: rgba(15, 20, 25, 0.85);
             padding: 20px 0;
             position: sticky;
             top: 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
         nav {
             max-width: 1100px;
@@ -78,13 +80,13 @@
             align-items: center;
             padding: 0 25px;
         }
-        .logo { font-weight: 900; font-size: 1.5em; color: var(--text-main); letter-spacing: 1px; }
+        .logo { font-weight: 900; font-size: 1.4em; color: var(--text-main); letter-spacing: 0.5px; }
         .logo span { color: var(--accent); }
         
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text-muted);
             text-decoration: none;
-            margin-left: 20px;
+            margin-right: 25px;
             font-weight: 700;
             transition: 0.3s;
             font-size: 0.95em;
@@ -92,107 +94,142 @@
         .nav-links a:hover { color: var(--accent); }
 
         .hero {
-            max-width: 1200px;
-            margin: 60px auto;
+            max-width: 1100px;
+            margin: 80px auto 40px auto;
             padding: 0 25px;
             text-align: center;
         }
-        .hero h1 { font-size: 2.8em; margin-bottom: 15px; font-weight: 900; margin-top: 20px; }
+        .hero h1 { font-size: 3em; margin-bottom: 15px; font-weight: 900; color: #fff; }
+        
         .hero .title-badge {
-            background-color: rgba(76, 175, 80, 0.1);
+            background-color: var(--accent-dim);
             color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 6px 20px;
+            border-radius: 50px;
             font-size: 0.9em;
-            font-weight: bold;
+            font-weight: 700;
             display: inline-block;
-            margin-bottom: 35px;
-            border: 1px solid var(--accent);
+            margin-bottom: 40px;
+            border: 1px solid rgba(230, 198, 79, 0.3);
+            letter-spacing: 0.5px;
         }
         
         .split-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             margin-top: 20px;
-            text-align: right;
         }
         .split-col {
             flex: 1;
             min-width: 300px;
             background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
             font-size: 1.05em;
             color: var(--text-muted);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
-        .split-col:hover { transform: translateY(-5px); }
+        .split-col:hover { transform: translateY(-4px); border-color: rgba(230, 198, 79, 0.4); }
 
-        .ar-text { border-right: 5px solid var(--accent); }
-        .ar-text strong { color: var(--text-main); }
+        .ar-text { border-top: 4px solid var(--accent); text-align: right; }
+        .ar-text strong { color: #fff; }
+        
         .en-text {
             text-align: left;
             direction: ltr;
-            border-left: 5px solid var(--accent);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-top: 4px solid var(--accent);
+            font-family: system-ui, -apple-system, sans-serif;
         }
-        .en-text strong { color: var(--text-main); }
+        .en-text strong { color: #fff; }
 
-        .blog-section { max-width: 1000px; margin: 80px auto; padding: 0 25px; }
+        .blog-section { max-width: 1100px; margin: 100px auto; padding: 0 25px; }
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
         .section-title { 
-            font-size: 1.6em; font-weight: 900; color: var(--text-main);
-            direction: ltr; text-align: right; width: 100%;
+            font-size: 1.8em; font-weight: 900; color: #fff;
+            text-align: right; width: 100%;
         }
         
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+        
         .blog-card {
             background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            transition: transform 0.3s, border-color 0.3s;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .blog-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
-        .blog-meta { font-size: 0.85em; color: #666; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        .blog-title { font-size: 1.3em; margin-bottom: 15px; font-weight: 700; line-height: 1.4; }
-        .blog-excerpt { font-size: 0.95em; color: var(--text-muted); margin-bottom: 20px; }
-        .read-btn { color: var(--accent); text-decoration: none; font-weight: bold; align-self: flex-end; transition: 0.2s; }
+        .blog-card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--accent); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
+        }
+        
+        .blog-meta { 
+            font-size: 0.85em; 
+            color: var(--text-muted); 
+            margin-bottom: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 500;
+        }
+        .blog-category {
+            color: var(--accent);
+            background: var(--accent-dim);
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+        
+        .blog-title { font-size: 1.35em; margin-bottom: 15px; font-weight: 700; line-height: 1.4; color: #fff; }
+        .blog-excerpt { font-size: 0.95em; color: var(--text-muted); margin-bottom: 25px; text-align: justify; }
+        
+        .read-btn { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: 0.2s; 
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
         .read-btn:hover { color: #fff; }
 
         footer {
             text-align: center;
-            padding: 50px 0;
-            color: #555;
+            padding: 60px 0;
+            color: var(--text-muted);
             font-size: 0.9em;
-            margin-top: 60px;
-            border-top: 1px solid #222;
+            margin-top: 100px;
+            border-top: 1px solid var(--border-color);
+            background-color: #0B0F13;
         }
-        .social-icons { margin-bottom: 20px; }
+        .social-icons { margin-bottom: 25px; }
         .social-icons a {
             color: var(--text-muted);
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin: 0 15px;
             transition: 0.3s;
+            display: inline-block;
         }
-        .social-icons a:hover { color: var(--accent); transform: scale(1.2); }
+        .social-icons a:hover { color: var(--accent); transform: scale(1.15); }
 
         @media (max-width: 768px) {
             .split-container { flex-direction: column; }
-            .hero h1 { font-size: 2em; }
-            .nav-links a { margin-left: 15px; font-size: 0.8em; }
+            .hero h1 { font-size: 2.2em; }
+            nav { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
         }
     </style>
 </head>
@@ -202,9 +239,9 @@
         <nav>
             <div class="logo">Mshal <span>D. AlRuwaili</span></div>
             <div class="nav-links">
-                <a href="#">Home / الرئيسية</a>
-                <a href="#about">About / عني</a>
-                <a href="#blog">Blog / المدونة</a>
+                <a href="#">الرئيسية</a>
+                <a href="#about">عني</a>
+                <a href="#blog">المدونة</a>
             </div>
         </nav>
     </header>
@@ -239,31 +276,8 @@
         <div class="section-header">
             <h2 class="section-title">Latest Posts / أحدث التدوينات</h2>
         </div>
-        <div class="blog-grid">
-            
-            <div class="blog-card">
-                <div class="blog-meta"><span>November 21, 2025</span><span>Physics & Philosophy</span></div>
-                <div class="blog-title">The Duality of Light: Between Matter Particle and Probability Wave</div>
-                <div class="blog-excerpt">
-                    How can light be two contradictory entities at once? 
-                    A deep dive into the "Double-Slit Experiment," and how the mere act of "observation" collapses the photon from a wandering wave into a definite particle.
-                    Does the universe wait for us to observe it in order to take shape? Engineering inquiries into the depths of physics.
-                </div>
-                <a href="light-duality-en.html" class="read-btn">Read More ←</a>
-            </div>
-
-            <div class="blog-card">
-                <div class="blog-meta"><span>21 نوفمبر 2025</span><span>فيزياء وفلسفة</span></div>
-                <div class="blog-title">ازدواجية الضوء: بين جسيم المادة وموجة الاحتمال</div>
-                <div class="blog-excerpt">
-                    كيف يمكن للضوء أن يكون شيئين متناقضين في آن واحد؟ 
-                    نظرة عميقة في "تجربة الشق المزدوج"، وكيف أن مجرد "المراقبة" يغير سلوك الفوتونات من موجة هائمة إلى جسيم محدد.
-                    هل الكون ينتظرنا لننظر إليه كي يتشكل؟ تساؤلات هندسية في عمق الفيزياء.
-                </div>
-                <a href="light-duality.html" class="read-btn">اقرأ المزيد ←</a>
-            </div>
-
-        </div>
+        
+        <div class="blog-grid" id="blogGrid"></div>
     </section>
 
     <footer>
@@ -272,16 +286,53 @@
             <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://twitter.com/YOUR_HANDLE" target="_blank"><i class="fab fa-x-twitter"></i></a>
         </div>
-        <p>© 2025 Mshal D. AlRuwaili | Engineering & Code ⚡💻</p>
+        <p>© 2026 Mshal D. AlRuwaili | Engineering & Code ⚡💻</p>
     </footer>
 
     <script>
-        console.log("%c🛑 Wait!", "color: red; font-size: 40px; font-weight: bold; text-shadow: 2px 2px #000;");
-        console.log("%cYou are viewing the console of Engineer Mshal D.", "color: #4caf50; font-size: 16px; font-weight: bold;");
-        console.log("%cIf you are looking for a skilled developer/engineer, contact me.", "color: #e0e0e0; font-size: 14px;");
-        console.log("🐧 Linux User | ⚡ Electrical Engineer | 💻 Code Lover");
-    </script>
+        const myBlogPosts = [
+            {
+                title: "ازدواجية الضوء: بين جسيم المادة وموجة الاحتمال",
+                date: "21 نوفمبر 2025",
+                category: "فيزياء وفلسفة",
+                excerpt: "كيف يمكن للضوء أن يكون شيئين متناقضين في آن واحد؟ نظرة عميقة في 'تجربة الشق المزدوج'، وكيف أن مجرد 'المراقبة' يغير سلوك الفوتونات من موجة هائمة إلى جسيم محدد.",
+                link: "light-duality.html",
+                btnText: "اقرأ المزيد ←",
+                dir: "rtl"
+            },
+            {
+                title: "The Duality of Light: Between Matter Particle and Probability Wave",
+                date: "November 21, 2025",
+                category: "Physics & Philosophy",
+                excerpt: "How can light be two contradictory entities at once? A deep dive into the 'Double-Slit Experiment,' and how the mere act of 'observation' collapses the photon.",
+                link: "light-duality-en.html",
+                btnText: "Read More →",
+                dir: "ltr"
+            }
+        ];
 
+        function renderBlogs() {
+            const grid = document.getElementById('blogGrid');
+            grid.innerHTML = myBlogPosts.map(post => `
+                <div class="blog-card" style="direction: ${post.dir}; text-align: ${post.dir === 'rtl' ? 'right' : 'left'}">
+                    <div>
+                        <div class="blog-meta">
+                            <span>${post.date}</span>
+                            <span class="blog-category">${post.category}</span>
+                        </div>
+                        <div class="blog-title">${post.title}</div>
+                        <div class="blog-excerpt">${post.excerpt}</div>
+                    </div>
+                    <a href="${post.link}" class="read-btn">${post.btnText}</a>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderBlogs);
+
+        console.log("%cStop!", "color: #E6C64F; font-size: 40px; font-weight: bold;");
+        console.log("%cYou are viewing the console of Engineer Mshal D.", "color: #fff; font-size: 16px; font-weight: bold;");
+        console.log("Linux User | Electrical Engineer | Code Lover");
+    </script>
 </body>
 </html>
-
