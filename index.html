@@ -3,69 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <meta name="google-site-verification" content="T4OYCfaWB7JLmxNt9xTrpZ7EEt6cuf13Nfp27awapY0" />
 
-    <title>المهندس مشعل الرويلي | Electrical Engineer Mshal AlRuwaili</title>
-    <meta name="description" content="Official portfolio of Mshal D. AlRuwaili. Electrical Engineer and Software Developer specializing in Power Systems, Python, Java, and System Logic.">
-    <meta name="keywords" content="Mshal AlRuwaili, Mshal D., Electrical Engineer, Software Developer, Engineer Saudi Arabia, Python, Java, GitHub Portfolio">
-    <meta name="author" content="Mshal D. AlRuwaili">
+    <title>المهندس مشعل الرويلي | Electrical Engineer Mushal AlRuwaili</title>
+    <meta name="description" content="Official portfolio of Mushal D. AlRuwaili. Electrical Engineer and Software Developer specializing in Power Systems, Python, Java, and System Logic.">
+    <meta name="keywords" content="Mushal AlRuwaili, Mushal D., Electrical Engineer, Software Developer, Engineer Saudi Arabia, Python, Java, GitHub Portfolio">
+    <meta name="author" content="Mushal D. AlRuwaili">
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Sans+Arabic:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "Person",
-      "name": "Mshal D. AlRuwaili",
+      "name": "Mushal D. AlRuwaili",
       "jobTitle": "Electrical Engineer & Software Developer",
       "url": "https://mshalalruwaili.github.io",
       "sameAs": [
-        "https://www.linkedin.com/in/YOUR_PROFILE",
-        "https://github.com/MshalAlruwaili",
-        "https://twitter.com/YOUR_HANDLE"
+        "https://www.linkedin.com/in/mushal-alruwaili-6b3ab336a",
+        "https://github.com/MshalAlruwaili"
       ]
     }
     </script>
 
     <style>
         :root {
-            --bg-color: #0F1419;
-            --card-bg: #161C24;
-            --text-main: #F4F6F8;
-            --text-muted: #919EAB;
-            --accent: #E6C64F;
-            --accent-dim: rgba(230, 198, 79, 0.1);
-            --border-color: #212B36;
+            --bg: #0A0D12;
+            --bg-elevated: #10141B;
+            --card-bg: #141922;
+            --text-main: #F3F5F8;
+            --text-muted: #8D97A6;
+            --text-faint: #545E6B;
+            --accent: #E8C468;
+            --accent-dim: rgba(232, 196, 104, 0.10);
+            --accent-line: rgba(232, 196, 104, 0.35);
+            --circuit: #57D6D9;
+            --circuit-dim: rgba(87, 214, 217, 0.10);
+            --border-color: #212832;
         }
-        
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 12% 8%, rgba(232,196,104,0.05), transparent 40%),
+                radial-gradient(circle at 88% 18%, rgba(87,214,217,0.05), transparent 35%);
             color: var(--text-main);
             font-family: 'Tajawal', sans-serif;
             line-height: 1.8;
             overflow-x: hidden;
         }
 
+        ::selection { background: var(--accent-dim); color: var(--accent); }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .hero, .split-col, .blog-section {
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0; 
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
         }
-        .hero { animation-delay: 0.2s; }
-        .split-container { animation-delay: 0.4s; }
+
+        .hero, .signature-wrap, .split-container, .expertise-section, .featured-section, .blog-section {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .hero { animation-delay: 0.1s; }
+        .signature-wrap { animation-delay: 0.25s; }
+        .split-container { animation-delay: 0.35s; }
+        .expertise-section { animation-delay: 0.45s; }
+        .featured-section { animation-delay: 0.5s; }
         .blog-section { animation-delay: 0.6s; }
 
+        /* ===== HEADER ===== */
         header {
-            background-color: rgba(15, 20, 25, 0.85);
-            padding: 20px 0;
+            background-color: rgba(10, 13, 18, 0.85);
+            padding: 18px 0;
             position: sticky;
             top: 0;
             border-bottom: 1px solid var(--border-color);
@@ -80,156 +102,322 @@
             align-items: center;
             padding: 0 25px;
         }
-        .logo { font-weight: 900; font-size: 1.4em; color: var(--text-main); letter-spacing: 0.5px; }
+        .logo {
+            font-weight: 800;
+            font-size: 1.25em;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            text-decoration: none;
+        }
+        .logo-node {
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim);
+        }
         .logo span { color: var(--accent); }
-        
+
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
             margin-right: 25px;
             font-weight: 700;
-            transition: 0.3s;
-            font-size: 0.95em;
+            transition: 0.25s;
+            font-size: 0.92em;
         }
         .nav-links a:hover { color: var(--accent); }
 
+        /* ===== HERO ===== */
         .hero {
             max-width: 1100px;
-            margin: 80px auto 40px auto;
+            margin: 70px auto 0 auto;
             padding: 0 25px;
             text-align: center;
         }
-        .hero h1 { font-size: 3em; margin-bottom: 15px; font-weight: 900; color: #fff; }
-        
+        .eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+            color: var(--circuit);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+        .hero h1 {
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            font-size: 3em;
+            margin-bottom: 14px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
         .hero .title-badge {
             background-color: var(--accent-dim);
             color: var(--accent);
             padding: 6px 20px;
             border-radius: 50px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 40px;
-            border: 1px solid rgba(230, 198, 79, 0.3);
+            margin-bottom: 10px;
+            border: 1px solid rgba(232, 196, 104, 0.3);
+            letter-spacing: 0.4px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* ===== SIGNATURE: circuit / orbit trace ===== */
+        .signature-wrap {
+            max-width: 1100px;
+            margin: 34px auto 10px auto;
+            padding: 0 15px;
+        }
+        .signature-svg { width: 100%; height: auto; display: block; }
+        .trace-path {
+            fill: none;
+            stroke: var(--border-color);
+            stroke-width: 1.5;
+        }
+        .pulse-path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-dasharray: 6 700;
+            filter: drop-shadow(0 0 3px rgba(232,196,104,0.8));
+            animation: travel 7s linear infinite;
+        }
+        @keyframes travel {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -706; }
+        }
+        .sig-node { fill: var(--bg-elevated); stroke: var(--text-faint); stroke-width: 1.5; }
+        .sig-node-dot { fill: var(--circuit); }
+        .sig-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px;
+            fill: var(--text-muted);
             letter-spacing: 0.5px;
         }
-        
+
+        /* ===== BIO SPLIT ===== */
         .split-container {
+            max-width: 1100px;
+            margin: 20px auto 0 auto;
+            padding: 0 25px;
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
-            margin-top: 20px;
+            gap: 22px;
         }
         .split-col {
             flex: 1;
             min-width: 300px;
             background-color: var(--card-bg);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            font-size: 1.05em;
+            padding: 34px 32px;
+            border-radius: 4px;
+            position: relative;
+            font-size: 1.02em;
             color: var(--text-muted);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
         }
-        .split-col:hover { transform: translateY(-4px); border-color: rgba(230, 198, 79, 0.4); }
+        .split-col::before, .split-col::after {
+            content: "";
+            position: absolute;
+            width: 14px; height: 14px;
+            border: 2px solid var(--accent-line);
+        }
+        .split-col::before { top: -1px; inset-inline-start: -1px; border-inline-end: none; border-bottom: none; }
+        .split-col::after { bottom: -1px; inset-inline-end: -1px; border-inline-start: none; border-top: none; }
+        .split-col:hover { border-color: rgba(232, 196, 104, 0.35); }
 
-        .ar-text { border-top: 4px solid var(--accent); text-align: right; }
+        .ar-text { text-align: right; }
         .ar-text strong { color: #fff; }
-        
+
         .en-text {
             text-align: left;
             direction: ltr;
-            border-top: 4px solid var(--accent);
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'IBM Plex Sans', system-ui, sans-serif;
         }
         .en-text strong { color: #fff; }
 
-        .blog-section { max-width: 1100px; margin: 100px auto; padding: 0 25px; }
+        /* ===== EXPERTISE ===== */
+        .expertise-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
+        .expertise-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .chip {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.82em;
+            color: var(--text-muted);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            padding: 9px 16px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            letter-spacing: 0.3px;
+        }
+        .chip .pin { width: 6px; height: 6px; border-radius: 50%; background: var(--circuit); flex-shrink: 0; }
+
+        /* ===== FEATURED PROJECT ===== */
+        .featured-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
+        .featured-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-card::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, var(--accent-dim), transparent 70%);
+            pointer-events: none;
+        }
+        .featured-text { max-width: 620px; }
+        .featured-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72em;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .featured-title { font-size: 1.6em; font-weight: 800; color: #fff; margin-bottom: 12px; font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; }
+        .featured-desc { color: var(--text-muted); font-size: 0.98em; }
+        .featured-cta {
+            background: var(--accent);
+            color: #14161a;
+            text-decoration: none;
+            font-weight: 800;
+            padding: 13px 26px;
+            border-radius: 3px;
+            font-size: 0.92em;
+            white-space: nowrap;
+            transition: 0.25s;
+            flex-shrink: 0;
+        }
+        .featured-cta:hover { background: #f0d488; transform: translateY(-2px); }
+
+        /* ===== BLOG ===== */
+        .blog-section { max-width: 1100px; margin: 90px auto 60px auto; padding: 0 25px; }
         .section-header {
-            margin-bottom: 40px;
+            margin-bottom: 34px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+            padding-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
         }
-        .section-title { 
-            font-size: 1.8em; font-weight: 900; color: #fff;
-            text-align: right; width: 100%;
+        .section-title {
+            font-size: 1.6em; font-weight: 800; color: #fff;
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
         }
-        
-        .blog-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 25px; 
+        .section-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8em;
+            color: var(--text-faint);
         }
-        
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
         .blog-card {
             background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
+            padding: 28px;
+            border-radius: 4px;
             border: 1px solid var(--border-color);
+            border-top: 2px solid var(--accent);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .blog-card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--accent); 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5); 
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.45);
         }
-        
-        .blog-meta { 
-            font-size: 0.85em; 
-            color: var(--text-muted); 
-            margin-bottom: 15px; 
-            display: flex; 
-            justify-content: space-between; 
-            font-weight: 500;
+
+        .blog-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78em;
+            color: var(--text-faint);
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
         }
         .blog-category {
             color: var(--accent);
             background: var(--accent-dim);
             padding: 2px 10px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
-        
-        .blog-title { font-size: 1.35em; margin-bottom: 15px; font-weight: 700; line-height: 1.4; color: #fff; }
-        .blog-excerpt { font-size: 0.95em; color: var(--text-muted); margin-bottom: 25px; text-align: justify; }
-        
-        .read-btn { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-weight: 700; 
-            transition: 0.2s; 
+
+        .blog-title { font-size: 1.28em; margin-bottom: 14px; font-weight: 700; line-height: 1.45; color: #fff; }
+        .blog-excerpt { font-size: 0.94em; color: var(--text-muted); margin-bottom: 22px; text-align: justify; }
+
+        .read-btn {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.92em;
         }
-        .read-btn:hover { color: #fff; }
+        .read-btn:hover { color: #fff; gap: 12px; }
 
+        /* ===== FOOTER ===== */
         footer {
             text-align: center;
-            padding: 60px 0;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            margin-top: 100px;
+            padding: 55px 0 45px 0;
+            color: var(--text-faint);
+            font-size: 0.88em;
+            margin-top: 60px;
             border-top: 1px solid var(--border-color);
-            background-color: #0B0F13;
+            background-color: #080A0E;
         }
-        .social-icons { margin-bottom: 25px; }
+        .social-icons { margin-bottom: 22px; display: flex; justify-content: center; gap: 18px; }
         .social-icons a {
             color: var(--text-muted);
-            font-size: 1.4em;
-            margin: 0 15px;
             transition: 0.3s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
+        .social-icons svg { width: 22px; height: 22px; fill: currentColor; }
         .social-icons a:hover { color: var(--accent); transform: scale(1.15); }
+        footer p { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; letter-spacing: 0.3px; }
 
         @media (max-width: 768px) {
             .split-container { flex-direction: column; }
-            .hero h1 { font-size: 2.2em; }
-            nav { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 2.1em; }
+            nav { flex-direction: column; gap: 14px; }
             .nav-links a { margin: 0 10px; }
+            .featured-card { flex-direction: column; align-items: flex-start; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
@@ -237,91 +425,131 @@
 
     <header>
         <nav>
-            <div class="logo">Mshal <span>D. AlRuwaili</span></div>
+            <a href="#" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
             <div class="nav-links">
                 <a href="#">الرئيسية</a>
                 <a href="#about">عني</a>
+                <a href="#expertise">المهارات</a>
                 <a href="#blog">المدونة</a>
             </div>
         </nav>
     </header>
 
     <section class="hero" id="about">
+        <span class="eyebrow">SIGNAL → LOGIC → SYSTEM</span>
         <h1>مشعل الرويلي</h1>
         <div class="title-badge">Electrical Engineer & Software Developer</div>
-        
-        <div class="split-container">
-            <div class="split-col ar-text">
-                <p>
-                    أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
-                    <br><br>
-                    أؤمن أن كل نظام – سواء كان كهربائيًا، رقميًا، أو كونيًا – يخضع لمنطق دقيق وعلاقات سببية مترابطة. اهتمامي لا يقف عند حدود التقنية، بل يمتد إلى <strong>الفضاء والفيزياء الكونية</strong>، حيث أجد في اتساع الكون ما يعكس تعقيد الأنظمة التي نعمل معها هنا على الأرض.
-                    <br><br>
-                    أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
-                </p>
+    </section>
+
+    <div class="signature-wrap" aria-hidden="true">
+        <svg class="signature-svg" viewBox="0 0 1100 140" xmlns="http://www.w3.org/2000/svg">
+            <path class="trace-path" d="M 20 70 L 220 70 L 260 30 L 420 30 L 460 70 L 640 70 L 680 110 L 840 110 L 880 70 L 1080 70" />
+            <path class="pulse-path" d="M 20 70 L 220 70 L 260 30 L 420 30 L 460 70 L 640 70 L 680 110 L 840 110 L 880 70 L 1080 70" />
+
+            <circle class="sig-node" cx="220" cy="70" r="6"/>
+            <circle class="sig-node-dot" cx="220" cy="70" r="2.4"/>
+            <text class="sig-label" x="200" y="55" text-anchor="middle">POWER</text>
+
+            <circle class="sig-node" cx="460" cy="70" r="6"/>
+            <circle class="sig-node-dot" cx="460" cy="70" r="2.4"/>
+            <text class="sig-label" x="460" y="95" text-anchor="middle">PYTHON</text>
+
+            <circle class="sig-node" cx="680" cy="110" r="6"/>
+            <circle class="sig-node-dot" cx="680" cy="110" r="2.4"/>
+            <text class="sig-label" x="680" y="132" text-anchor="middle">JAVA · LUA</text>
+
+            <circle class="sig-node" cx="880" cy="70" r="6"/>
+            <circle class="sig-node-dot" cx="880" cy="70" r="2.4"/>
+            <text class="sig-label" x="900" y="55" text-anchor="middle">COSMOLOGY</text>
+        </svg>
+    </div>
+
+    <div class="split-container">
+        <div class="split-col ar-text">
+            <p>
+                أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
+                <br><br>
+                أؤمن أن كل نظام – سواء كان كهربائيًا، رقميًا، أو كونيًا – يخضع لمنطق دقيق وعلاقات سببية مترابطة. اهتمامي لا يقف عند حدود التقنية، بل يمتد إلى <strong>الفضاء والفيزياء الكونية</strong>، حيث أجد في اتساع الكون ما يعكس تعقيد الأنظمة التي نعمل معها هنا على الأرض.
+                <br><br>
+                أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
+            </p>
+        </div>
+        <div class="split-col en-text">
+            <p>
+                I am <strong>Mushal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
+                <br><br>
+                I believe that every system—whether electrical, digital, or cosmic—is governed by precise logic and interconnected causal relationships. My interest extends beyond the boundaries of technology to <strong>Space and Cosmic Physics</strong>, where I find in the vastness of the universe a reflection of the complexity of the systems we deal with here on Earth.
+                <br><br>
+                I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
+            </p>
+        </div>
+    </div>
+
+    <section class="expertise-section" id="expertise">
+        <div class="expertise-grid">
+            <span class="chip"><span class="pin"></span>POWER SYSTEMS</span>
+            <span class="chip"><span class="pin"></span>PYTHON</span>
+            <span class="chip"><span class="pin"></span>JAVA</span>
+            <span class="chip"><span class="pin"></span>LUA</span>
+            <span class="chip"><span class="pin"></span>HTML / CSS</span>
+            <span class="chip"><span class="pin"></span>SYSTEM LOGIC</span>
+            <span class="chip"><span class="pin"></span>CIRCUIT DESIGN</span>
+            <span class="chip"><span class="pin"></span>ASTROPHYSICS</span>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="featured-card">
+            <div class="featured-text">
+                <span class="featured-eyebrow">تطبيق منشور · Google Play</span>
+                <div class="featured-title">مِعْراج — تدبر النصوص بلمسة هندسية</div>
+                <p class="featured-desc">منصة مجانية بالكامل وخالية من الإعلانات، مصممة ببساطة متناهية لتدبر النصوص مع أدوات يومية.</p>
             </div>
-            <div class="split-col en-text">
-                <p>
-                    I am <strong>Mshal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
-                    <br><br>
-                    I believe that every system—whether electrical, digital, or cosmic—is governed by precise logic and interconnected causal relationships. My interest extends beyond the boundaries of technology to <strong>Space and Cosmic Physics</strong>, where I find in the vastness of the universe a reflection of the complexity of the systems we deal with here on Earth.
-                    <br><br>
-                    I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
-                </p>
-            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.mishal.miraj" target="_blank" class="featured-cta">حمّله من المتجر ←</a>
         </div>
     </section>
 
     <section class="blog-section" id="blog">
         <div class="section-header">
-            <h2 class="section-title">Latest Posts / أحدث التدوينات</h2>
+            <h2 class="section-title">أحدث التدوينات / Latest Posts</h2>
+            <span class="section-count" id="postCount"></span>
         </div>
-        
+
         <div class="blog-grid" id="blogGrid"></div>
     </section>
 
     <footer>
         <div class="social-icons">
-            <a href="https://github.com/MshalAlruwaili" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/mushal-alruwaili-6b3ab336a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/YOUR_HANDLE" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/MshalAlruwaili" target="_blank" aria-label="GitHub">
+                <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/mushal-alruwaili-6b3ab336a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn">
+                <svg viewBox="0 0 16 16"><path d="M14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.64c.65 0 1.18-.52 1.18-1.16V1.16C16 .52 15.47 0 14.82 0ZM4.75 13.4H2.4V6h2.36v7.4Zm-1.18-8.4h-.02c-.79 0-1.3-.55-1.3-1.23 0-.7.53-1.23 1.33-1.23s1.3.53 1.31 1.23c0 .68-.51 1.23-1.32 1.23ZM13.6 13.4h-2.36V9.45c0-.99-.35-1.67-1.24-1.67-.68 0-1.08.46-1.26.9-.06.16-.08.38-.08.6v4.12H6.3s.03-6.68 0-7.4h2.36v1.05c.31-.48.88-1.16 2.14-1.16 1.56 0 2.8 1.02 2.8 3.2v4.31Z"/></svg>
+            </a>
         </div>
-        <p>© 2026 Mshal D. AlRuwaili | Engineering & Code ⚡💻</p>
+        <p>© 2026 Mushal D. AlRuwaili — Engineering & Code</p>
     </footer>
 
     <script>
         const myBlogPosts = [
-                     {
-            title: "تطبيق مِعْرَاج متاح الآن على متجر جوجل بلاي ",
-            date: "27 يوليو 2026",
-            category: "إطلاق تطبيق",
-            excerpt: "بكل فخر، أعلن عن إطلاق تطبيق مِعْرَاج رسمياً. منصة مجانية تماماً وخالية من الإعلانات، مصممة ببساطة متناهية لتدبر النصوص مع أدوات يومية بلمسة هندسية.",
-            link: "https://play.google.com/store/apps/details?id=com.mishal.miraj",
-            btnText: "حمله الآن من المتجر ←",
-            dir: "rtl"
-        },
-
             {
-    title: "الشطرنج: بين حتمية المنطق ولانهائية الاحتمالات الكونية",
-    date: "2 يوليو 2026",
-    category: "فيزياء وفلسفة",
-    excerpt: "قراءة فلسفية وهندسية في رقعة الشطرنج، وكيف تتحول 64 مربعاً إلى كون يتجاوز ذرات الطبيعة، وفكرة التفرّد الإنساني في صناعة تشكيلات لم يمر بها تاريخ البشرية.",
-    link: "chess-philosophy.html",
-    btnText: "اقرأ المزيد ←",
-    dir: "rtl"
-},
-
-{
-    title: "تطبيق مِعْرَاج: من الرؤية المنطقية إلى الإطلاق",
-    date: "1 يوليو 2026",
-    category: "تطوير تطبيقات",
-    excerpt: "الإعلان عن اكتمال تطوير تطبيق مِعْرَاج لتدبر وقراءة النصوص، واستعراض فلسفتنا التقنية في تقديم منصة مجانية تماماً وخالية من الإعلانات ترتكز على البساطة المتناهية.",
-    link: "miraj-app.html",
-    btnText: "اقرأ المزيد ←",
-    dir: "rtl"
-},
-
-
+                title: "الشطرنج: بين حتمية المنطق ولانهائية الاحتمالات الكونية",
+                date: "2 يوليو 2026",
+                category: "فيزياء وفلسفة",
+                excerpt: "قراءة فلسفية وهندسية في رقعة الشطرنج، وكيف تتحول 64 مربعاً إلى كون يتجاوز ذرات الطبيعة، وفكرة التفرّد الإنساني في صناعة تشكيلات لم يمر بها تاريخ البشرية.",
+                link: "chess-philosophy.html",
+                btnText: "اقرأ المزيد ←",
+                dir: "rtl"
+            },
+            {
+                title: "تطبيق مِعْراج: من الرؤية المنطقية إلى الإطلاق",
+                date: "1 يوليو 2026",
+                category: "تطوير تطبيقات",
+                excerpt: "الإعلان عن اكتمال تطوير تطبيق مِعْراج لتدبر وقراءة النصوص، واستعراض فلسفتنا التقنية في تقديم منصة مجانية تماماً وخالية من الإعلانات ترتكز على البساطة المتناهية.",
+                link: "miraj-app.html",
+                btnText: "اقرأ المزيد ←",
+                dir: "rtl"
+            },
             {
                 title: "ازدواجية الضوء: بين جسيم المادة وموجة الاحتمال",
                 date: "21 نوفمبر 2025",
@@ -357,12 +585,13 @@
                     <a href="${post.link}" class="read-btn">${post.btnText}</a>
                 </div>
             `).join('');
+            document.getElementById('postCount').textContent = myBlogPosts.length + ' منشورات';
         }
 
         document.addEventListener('DOMContentLoaded', renderBlogs);
 
-        console.log("%cStop!", "color: #E6C64F; font-size: 40px; font-weight: bold;");
-        console.log("%cYou are viewing the console of Engineer Mshal D.", "color: #fff; font-size: 16px; font-weight: bold;");
+        console.log("%cStop!", "color: #E8C468; font-size: 40px; font-weight: bold;");
+        console.log("%cYou are viewing the console of Engineer Mushal D.", "color: #fff; font-size: 16px; font-weight: bold;");
         console.log("Linux User | Electrical Engineer | Code Lover");
     </script>
 </body>
