@@ -232,7 +232,7 @@
         }
         .en-text strong { color: #fff; }
 
-        /* ===== PROJECTS (Formerly Expertise) ===== */
+        /* ===== PROJECTS ===== */
         .expertise-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
         .expertise-grid {
             display: flex;
@@ -413,15 +413,15 @@
 <body>
 
     <header>
-    <nav>
-    <a href="/" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
-    <div class="nav-links">
-        <a href="/">الرئيسية</a>
-        <a href="/about">عني</a>
-        <a href="/#projects">المشاريع</a>
-        <a href="/#blog">المدونة</a>
-    </div>
-</nav>
+        <nav>
+            <a href="/" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
+            <div class="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about">عني</a>
+                <a href="/#projects">المشاريع</a>
+                <a href="/#blog">المدونة</a>
+            </div>
+        </nav>
     </header>
 
     <section class="hero" id="home">
@@ -429,6 +429,7 @@
         <h1>مشعل الرويلي</h1>
         <div class="title-badge">Electrical Engineer & Software Developer</div>
     </section>
+
     <div class="signature-wrap" aria-hidden="true">
         <svg class="signature-svg" viewBox="0 0 1100 140" xmlns="http://www.w3.org/2000/svg">
             <path class="trace-path" d="M 20 70 L 220 70 L 260 30 L 420 30 L 460 70 L 640 70 L 680 110 L 840 110 L 880 70 L 1080 70" />
@@ -523,13 +524,13 @@
     </footer>
 
     <script>
-      const myBlogPosts = [
+        const myBlogPosts = [
             {
                 title: "الشطرنج: بين حتمية المنطق ولانهائية الاحتمالات الكونية",
                 date: "2 يوليو 2026",
                 category: "فيزياء وفلسفة",
                 excerpt: "قراءة فلسفية وهندسية في رقعة الشطرنج، وكيف تتحول 64 مربعاً إلى كون يتجاوز ذرات الطبيعة، وفكرة التفرّد الإنساني في صناعة تشكيلات لم يمر بها تاريخ البشرية.",
-                link: "/blogs/chess-philosophy.html",
+                link: "/blogs/post.html?file=chess-philosophy",
                 btnText: "اقرأ المزيد ←",
                 dir: "rtl"
             },
@@ -538,7 +539,7 @@
                 date: "1 يوليو 2026",
                 category: "تطوير تطبيقات",
                 excerpt: "الإعلان عن اكتمال تطوير تطبيق مِعْراج لتدبر وقراءة النصوص، واستعراض فلسفتنا التقنية في تقديم منصة مجانية تماماً وخالية من الإعلانات ترتكز على البساطة المتناهية.",
-                link: "/blogs/miraj-app.html",
+                link: "/blogs/post.html?file=miraj-app",
                 btnText: "اقرأ المزيد ←",
                 dir: "rtl"
             },
@@ -547,7 +548,7 @@
                 date: "21 نوفمبر 2025",
                 category: "فيزياء وفلسفة",
                 excerpt: "كيف يمكن للضوء أن يكون شيئين متناقضين في آن واحد؟ نظرة عميقة في 'تجربة الشق المزدوج'، وكيف أن مجرد 'المراقبة' يغير سلوك الفوتونات من موجة هائمة إلى جسيم محدد.",
-                link: "/blogs/light-duality.html",
+                link: "/blogs/post.html?file=light-duality",
                 btnText: "اقرأ المزيد ←",
                 dir: "rtl"
             },
@@ -556,7 +557,7 @@
                 date: "November 21, 2025",
                 category: "Physics & Philosophy",
                 excerpt: "How can light be two contradictory entities at once? A deep dive into the 'Double-Slit Experiment,' and how the mere act of 'observation' collapses the photon.",
-                link: "/blogs/light-duality-en.html",
+                link: "/blogs/post.html?file=light-duality-en",
                 btnText: "Read More →",
                 dir: "ltr"
             }
@@ -564,7 +565,7 @@
 
         function renderBlogs() {
             const grid = document.getElementById('blogGrid');
-            grid.innerHTML = myBlogPosts.map(post => 
+            grid.innerHTML = myBlogPosts.map(post => `
                 <div class="blog-card" style="direction: ${post.dir}; text-align: ${post.dir === 'rtl' ? 'right' : 'left'}">
                     <div>
                         <div class="blog-meta">
@@ -576,7 +577,7 @@
                     </div>
                     <a href="${post.link}" class="read-btn">${post.btnText}</a>
                 </div>
-            ).join('');
+            `).join('');
             document.getElementById('postCount').textContent = myBlogPosts.length + ' منشورات';
         }
 
