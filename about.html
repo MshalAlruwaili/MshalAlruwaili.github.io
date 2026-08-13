@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عني | المهندس مشعل الرويلي</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Sans+Arabic:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0A0D12;
+            --bg-elevated: #10141B;
+            --card-bg: #141922;
+            --text-main: #F3F5F8;
+            --text-muted: #8D97A6;
+            --text-faint: #545E6B;
+            --accent: #E8C468;
+            --accent-dim: rgba(232, 196, 104, 0.10);
+            --border-color: #212832;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(232,196,104,0.05), transparent 40%);
+            color: var(--text-main);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--accent-dim); color: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: rgba(10, 13, 18, 0.85);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.25em;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            text-decoration: none;
+        }
+        .logo-node {
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim);
+        }
+        .logo span { color: var(--accent); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-right: 25px; font-weight: 700; transition: 0.25s; font-size: 0.92em; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ===== ABOUT CONTENT ===== */
+        .about-wrapper {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 25px;
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .about-header h1 {
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            font-size: 2.8em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .about-header p {
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        .bio-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 45px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .bio-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 0 6px 6px 0;
+        }
+        .bio-section h2 {
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            color: #fff;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .bio-section p {
+            color: var(--text-muted);
+            font-size: 1.05em;
+            line-height: 1.9;
+        }
+
+        .bio-list {
+            list-style: none;
+            padding-right: 15px;
+        }
+        
+        .bio-list li {
+            color: var(--text-muted);
+            font-size: 1.05em;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .bio-list li::before {
+            content: "■";
+            color: var(--accent);
+            position: absolute;
+            right: -20px;
+            font-size: 0.8em;
+            top: 6px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 55px 0 45px 0;
+            color: var(--text-faint);
+            font-size: 0.88em;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            background-color: #080A0E;
+        }
+        
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 14px; }
+            .nav-links a { margin: 0 10px; }
+            .bio-section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html" style="color: var(--accent);">عني</a>
+                <a href="index.html#projects">المشاريع</a>
+                <a href="index.html#blog">المدونة</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="about-wrapper">
+        <div class="about-header">
+            <h1>نبذة شخصية</h1>
+            <p>BEHIND THE CODE & CIRCUITS</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>من أنا؟</h2>
+            <p>مشعل الرويلي، مهندس كهربائي متخصص في أنظمة القوى والآلات الكهربائية، ومطوّر برمجيات. معتمد لدى الهيئة السعودية للمهندسين. أجمع بين التخصص الهندسي الدقيق والفضول التقني المستمر، وأمتد باهتمامي إلى مجالات أخرى كالبرمجة والفيزياء الكونية.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>التعليم والشهادات</h2>
+            <ul class="bio-list">
+                <li>بكالوريوس هندسة القوى والآلات الكهربائية</li>
+                <li>دبلوم تقنية المعلومات (IT)</li>
+                <li>دبلوم الطاقة المتجددة (سنتان ونصف)</li>
+                <li>دراسات عليا في الإدارة الصحية (قيد الدراسة حاليًا)</li>
+            </ul>
+        </div>
+
+        <div class="bio-section">
+            <h2>المسيرة المهنية</h2>
+            <p>تنقلت في مجال الهندسة الكهربائية بين القطاعين الحكومي والخاص، وأشغل حاليًا منصب مهندس كهربائي في القطاع الخاص.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>البرمجة</h2>
+            <p>بدأت رحلتي بعالم البرمجة عام 2015، بدافع فضولي حول نظام Linux، ثم تطور الاهتمام تدريجيًا إلى تطوير التطبيقات — للجوال والحاسب على حد سواء — بلغات مثل Java وPython وLua وKotlin.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>الفيزياء والفلك</h2>
+            <p>اهتمامي بالفضاء وعلم الفلك قديم، وازداد عمقًا مع مرور الوقت والدراسة، ليصبح جزءًا أساسيًا من فضولي الفكري خارج نطاق التخصص الهندسي المباشر.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Mushal D. AlRuwaili — Engineering & Code</p>
+    </footer>
+
+</body>
+</html>
