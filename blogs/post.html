@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدونة | المهندس مشعل الرويلي</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Sans+Arabic:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Marked.js لتحويل Markdown إلى HTML تلقائياً -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #0A0D12;
+            --card-bg: #141922;
+            --text-main: #F3F5F8;
+            --text-muted: #8D97A6;
+            --accent: #E8C468;
+            --border-color: #212832;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background-color: rgba(10, 13, 18, 0.85);
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 100;
+        }
+        nav {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; padding: 0 25px;
+        }
+        .logo { font-weight: 800; color: #fff; text-decoration: none; font-size: 1.2em; }
+        .logo span { color: var(--accent); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-right: 20px; font-weight: 700; }
+
+        .article-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 40px;
+        }
+
+        .article-container h1, .article-container h2, .article-container h3 {
+            color: #fff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+        }
+
+        .article-container p {
+            color: var(--text-muted);
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+
+        .article-container blockquote {
+            border-right: 3px solid var(--accent);
+            padding-right: 15px;
+            margin: 20px 0;
+            color: var(--text-main);
+            background: rgba(232, 196, 104, 0.05);
+            padding: 10px 15px;
+        }
+
+        .article-container code {
+            font-family: 'IBM Plex Mono', monospace;
+            background: #10141B;
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">Mushal <span>D. AlRuwaili</span></a>
+            <div class="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about">عني</a>
+                <a href="/#blog">المدونة</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="article-container" id="content">
+        <p>جاري تحميل المقال...</p>
+    </div>
+
+    <footer>
+        <p>© 2026 Mushal D. AlRuwaili — Engineering & Code</p>
+    </footer>
+
+    <script>
+        async function loadMarkdown() {
+            const params = new URLSearchParams(window.location.search);
+            const fileName = params.get('file');
+
+            if (!fileName) {
+                document.getElementById('content').innerHTML = '<h2>لم يتم العثور على المقال المطلوبة.</h2>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/blogs/${fileName}.md`);
+                if (!response.ok) throw new Error("المقال غير موجود");
+                
+                const markdownText = await response.text();
+                document.getElementById('content').innerHTML = marked.parse(markdownText);
+            } catch (err) {
+                document.getElementById('content').innerHTML = '<h2>خطأ في تحميل المقال. تأكد من وجود ملف .md</h2>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadMarkdown);
+    </script>
+</body>
+</html>
 
