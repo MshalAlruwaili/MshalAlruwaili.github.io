@@ -13,20 +13,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Sans+Arabic:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "name": "Mushal D. AlRuwaili",
-      "jobTitle": "Electrical Engineer & Software Developer",
-      "url": "https://mshalalruwaili.github.io",
-      "sameAs": [
-        "https://www.linkedin.com/in/mushal-alruwaili-6b3ab336a",
-        "https://github.com/MshalAlruwaili"
-      ]
-    }
-    </script>
-
     <style>
         :root {
             --bg: #0A0D12;
@@ -223,9 +209,11 @@
             color: var(--text-muted);
             border: 1px solid var(--border-color);
             transition: border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .split-col::before, .split-col::after {
-            content: "";
+        .split-col::before, .split-col::after {content: "";
             position: absolute;
             width: 14px; height: 14px;
             border: 2px solid var(--accent-line);
@@ -244,7 +232,7 @@
         }
         .en-text strong { color: #fff; }
 
-        /* ===== EXPERTISE ===== */
+        /* ===== PROJECTS (Formerly Expertise) ===== */
         .expertise-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
         .expertise-grid {
             display: flex;
@@ -325,6 +313,7 @@
             justify-content: space-between;
             align-items: baseline;
         }
+
         .section-title {
             font-size: 1.6em; font-weight: 800; color: #fff;
             font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
@@ -425,22 +414,21 @@
 
     <header>
         <nav>
-            <a href="#" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
+            <a href="index.html" class="logo"><span class="logo-node"></span><span dir="ltr">Mushal <span>D. AlRuwaili</span></span></a>
             <div class="nav-links">
-                <a href="#">الرئيسية</a>
-                <a href="#about">عني</a>
-                <a href="#expertise">المهارات</a>
+                <a href="index.html">الرئيسية</a>
+                <a href="about.html">عني</a>
+                <a href="#projects">المشاريع</a>
                 <a href="#blog">المدونة</a>
             </div>
         </nav>
     </header>
 
-    <section class="hero" id="about">
+    <section class="hero" id="home">
         <span class="eyebrow">SIGNAL → LOGIC → SYSTEM</span>
         <h1>مشعل الرويلي</h1>
         <div class="title-badge">Electrical Engineer & Software Developer</div>
     </section>
-
     <div class="signature-wrap" aria-hidden="true">
         <svg class="signature-svg" viewBox="0 0 1100 140" xmlns="http://www.w3.org/2000/svg">
             <path class="trace-path" d="M 20 70 L 220 70 L 260 30 L 420 30 L 460 70 L 640 70 L 680 110 L 840 110 L 880 70 L 1080 70" />
@@ -466,35 +454,40 @@
 
     <div class="split-container">
         <div class="split-col ar-text">
-            <p>
-                أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
-                <br><br>
-                أؤمن أن كل نظام – سواء كان كهربائيًا، رقميًا، أو كونيًا – يخضع لمنطق دقيق وعلاقات سببية مترابطة. اهتمامي لا يقف عند حدود التقنية، بل يمتد إلى <strong>الفضاء والفيزياء الكونية</strong>، حيث أجد في اتساع الكون ما يعكس تعقيد الأنظمة التي نعمل معها هنا على الأرض.
-                <br><br>
-                أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
-            </p>
+            <div>
+                <p>
+                    أنا <strong>مشعل الرويلي</strong>، مهندس كهربائي ومبرمج بلغات (<strong>Java, Python, Lua</strong>) ومطور واجهات (<strong>HTML</strong>). أتنقل بين العوالم البرمجية والأنظمة التقنية بسلاسة، وأسعى دائمًا لفهم ما وراء الكود: كيف يعمل النظام؟ ولماذا يعمل بهذه الطريقة؟
+                    <br><br>
+                    أؤمن أن كل نظام – سواء كان كهربائيًا، رقميًا، أو كونيًا – يخضع لمنطق دقيق وعلاقات سببية مترابطة. اهتمامي لا يقف عند حدود التقنية، بل يمتد إلى <strong>الفضاء والفيزياء الكونية</strong>، حيث أجد في اتساع الكون ما يعكس تعقيد الأنظمة التي نعمل معها هنا على الأرض.
+                    <br><br>
+                    أستخدم هذا الفضول كوقود فكري، يجعلني أطرح الأسئلة الصحيحة، وأصمم الحلول من زاوية أعمق من مجرد "وظيفة تعمل". معتمد لدى <strong>الهيئة السعودية للمهندسين</strong>، وأتحدث العربية والإنجليزية بطلاقة.
+                </p>
+            </div>
+            <a href="about.html" class="read-btn" style="margin-top: 20px;">اقرأ المزيد عني ←</a>
         </div>
         <div class="split-col en-text">
-            <p>
-                I am <strong>Mushal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
-                <br><br>
-                I believe that every system—whether electrical, digital, or cosmic—is governed by precise logic and interconnected causal relationships. My interest extends beyond the boundaries of technology to <strong>Space and Cosmic Physics</strong>, where I find in the vastness of the universe a reflection of the complexity of the systems we deal with here on Earth.
-                <br><br>
-                I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
-            </p>
+            <div>
+                <p>
+                    I am <strong>Mushal D. AlRuwaili</strong>, an Electrical Engineer and Programmer proficient in (<strong>Java, Python, Lua</strong>) and Front-end Development (<strong>HTML</strong>). I navigate seamlessly between software realms and technical systems, always striving to understand what lies behind the code: How does the system work? And why does it work this way?
+                    <br><br>
+                    I believe that every system—whether electrical, digital, or cosmic—is governed by precise logic and interconnected causal relationships. My interest extends beyond the boundaries of technology to <strong>Space and Cosmic Physics</strong>, where I find in the vastness of the universe a reflection of the complexity of the systems we deal with here on Earth.
+                    <br><br>
+                    I use this curiosity as intellectual fuel, driving me to ask the right questions and design solutions from a perspective deeper than just "functionality". Accredited by the <strong>Saudi Council of Engineers</strong>, fluent in Arabic and English.
+                </p>
+            </div>
+            <a href="about.html" class="read-btn" style="margin-top: 20px;">More About Me →</a>
         </div>
     </div>
 
-    <section class="expertise-section" id="expertise">
+    <section class="expertise-section" id="projects">
+        <div class="section-header" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
+            <h2 class="section-title" style="font-size: 1.3em; color: var(--text-muted);">المشاريع التقنية / Projects</h2>
+        </div>
         <div class="expertise-grid">
-            <span class="chip"><span class="pin"></span>POWER SYSTEMS</span>
-            <span class="chip"><span class="pin"></span>PYTHON</span>
-            <span class="chip"><span class="pin"></span>JAVA</span>
-            <span class="chip"><span class="pin"></span>LUA</span>
-            <span class="chip"><span class="pin"></span>HTML / CSS</span>
-            <span class="chip"><span class="pin"></span>SYSTEM LOGIC</span>
-            <span class="chip"><span class="pin"></span>CIRCUIT DESIGN</span>
-            <span class="chip"><span class="pin"></span>ASTROPHYSICS</span>
+            <span class="chip"><span class="pin"></span>تطبيق مِعْراج (Android)</span>
+            <span class="chip"><span class="pin"></span>تطبيقات Wear OS</span>
+            <span class="chip"><span class="pin"></span>Power System Logic</span>
+            <span class="chip"><span class="pin"></span>GitHub Portfolio</span>
         </div>
     </section>
 
@@ -514,7 +507,6 @@
             <h2 class="section-title">أحدث التدوينات / Latest Posts</h2>
             <span class="section-count" id="postCount"></span>
         </div>
-
         <div class="blog-grid" id="blogGrid"></div>
     </section>
 
@@ -544,8 +536,7 @@
             {
                 title: "تطبيق مِعْراج: من الرؤية المنطقية إلى الإطلاق",
                 date: "1 يوليو 2026",
-                category: "تطوير تطبيقات",
-                excerpt: "الإعلان عن اكتمال تطوير تطبيق مِعْراج لتدبر وقراءة النصوص، واستعراض فلسفتنا التقنية في تقديم منصة مجانية تماماً وخالية من الإعلانات ترتكز على البساطة المتناهية.",
+                category: "تطوير تطبيقات",excerpt: "الإعلان عن اكتمال تطوير تطبيق مِعْراج لتدبر وقراءة النصوص، واستعراض فلسفتنا التقنية في تقديم منصة مجانية تماماً وخالية من الإعلانات ترتكز على البساطة المتناهية.",
                 link: "miraj-app.html",
                 btnText: "اقرأ المزيد ←",
                 dir: "rtl"
@@ -572,7 +563,7 @@
 
         function renderBlogs() {
             const grid = document.getElementById('blogGrid');
-            grid.innerHTML = myBlogPosts.map(post => `
+            grid.innerHTML = myBlogPosts.map(post => 
                 <div class="blog-card" style="direction: ${post.dir}; text-align: ${post.dir === 'rtl' ? 'right' : 'left'}">
                     <div>
                         <div class="blog-meta">
@@ -584,7 +575,7 @@
                     </div>
                     <a href="${post.link}" class="read-btn">${post.btnText}</a>
                 </div>
-            `).join('');
+            ).join('');
             document.getElementById('postCount').textContent = myBlogPosts.length + ' منشورات';
         }
 
