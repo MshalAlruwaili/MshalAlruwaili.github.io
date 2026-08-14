@@ -1,96 +1,21 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ازدواجية الضوء | Mshal D.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --bg-color: #0F1419; 
-            --text-main: #F4F6F8; 
-            --text-muted: #919EAB; 
-            --accent: #E6C64F; 
-            --accent-dim: rgba(230, 198, 79, 0.1);
-            --border-color: #212B36;
-        }
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            font-family: 'Tajawal', sans-serif; 
-            line-height: 1.9; 
-            margin: 0; 
-            padding: 0; 
-            overflow-x: hidden; 
-        }
-        
-        header { 
-            padding: 25px 0; 
-            border-bottom: 1px solid var(--border-color); 
-            text-align: center;
-            background-color: rgba(15, 20, 25, 0.5);
-            backdrop-filter: blur(10px);
-        }
-        .logo { font-weight: 900; font-size: 1.4em; color: var(--text-main); text-decoration: none; letter-spacing: 0.5px; }
-        .logo span { color: var(--accent); }
+# الشطرنج: حين تحبس اللانهائية الكونية داخل 64 مربعاً
 
-        .article-container { max-width: 780px; margin: 80px auto; padding: 0 25px; }
-        
-        .article-meta { 
-            color: var(--accent); 
-            font-size: 0.95em; 
-            margin-bottom: 15px; 
-            font-weight: 700; 
-            display: inline-block;
-            background: var(--accent-dim);
-            padding: 4px 12px;
-            border-radius: 6px;
-        }
-        .article-title { font-size: 2.6em; font-weight: 900; margin-bottom: 40px; line-height: 1.4; color: #fff; letter-spacing: -0.5px; }
-        .article-content { font-size: 1.15em; color: #D1D5DB; text-align: justify; }
-        .article-content p { margin-bottom: 25px; }
-        .article-content strong { color: #fff; font-weight: 700; }
-        
-        .back-btn { 
-            display: inline-block; 
-            margin-top: 50px; 
-            padding: 12px 30px; 
-            border: 1px solid var(--border-color); 
-            color: var(--text-main); 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            transition: 0.3s; 
-            background: #161C24;
-        }
-        .back-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateX(-5px); }
+كـ مهندس ومطور أنظمة، أتعامل يومياً مع خوارزميات محددة، منطقها صارم يبدأ من الصفر والواحد وينتهي بحتمية واضحة. لكن عندما نتأمل رقعة الشطرنج، نجد أنفسنا أمام مفارقة مذهلة: كيف يمكن لقواعد صارمة ومحددة جداً، تحكم رقعة صغيرة بأبعاد (8×8) فقط، أن تنتج بداخلها فوضى عارمة من اللانهائية؟ كيف يتحول المنطق الجاف إلى فلسفة كونية؟
 
-        footer { text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 0.9em; margin-top: 100px; border-top: 1px solid var(--border-color); }
-    </style>
-</head>
-<body>
+## فلسفة النقلة: انهيار الاحتمالات وصناعة الأكوان البديلة
 
-    <header>
-        <a href="index.html" class="logo">Mshal <span>D. AlRuwaili</span></a>
-    </header>
+قبل أن تمد يدك لتحريك أي قطعة على الرقعة، تكون رقعة الشطرنج في حالة تشبه "التراكب الكمي" في الفيزياء. خصمك يضع في حسبانه خمسة أو عشرة ردود محتملة منك، وكل رد منها يفتح وراءه شجرة ضخمة من المستقبلات البديلة. في تلك اللحظة، الرقعة عبارة عن سحابة من الاحتمالات المتداخلة.
 
-    <div class="article-container">
-        <div class="article-meta">فيزياء وفلسفة &bull; 21 نوفمبر 2025</div>
-        <h1 class="article-title">ازدواجية الضوء: حيرة الكم والرقصة الكونية</h1>
-        
-        <div class="article-content">
-            <p>منذ أن بدأ الإنسان ينظر إلى السماء، كان السؤال الأبدي: <strong>مما يتكون الضوء؟</strong> هل هو موجات تسبح في الأثير مثل تموجات الماء؟ أم هو جسيمات مادية (كرات صغيرة) تنطلق بسرعة هائلة؟</p>
-            <p>كـ مهندس، أتعامل مع الأنظمة بمنطق (0) و (1). لكن في فيزياء الكم، وتحديداً في <strong>"تجربة الشق المزدوج"</strong>، انهار هذا المنطق التقليدي.</p>
-            <p>عندما نراقب الضوء، يتصرف كجسيمات مادية. ولكن عندما ندير ظهورنا، يتصرف كموجة احتمالات! هنا تكمن المعضلة: <strong>هل "المُراقب" هو من يصنع الواقع؟</strong></p>
-            <p>ربما يجب علينا كمهندسين أن نتعلم من الضوء: أن نكون دقيقين كالجزيئات عند التنفيذ، ومرنين كالموجات عند التفكير.</p>
-        </div>
+في الثواني التي تلمس فيها القطعة وتستقر في مربعها الجديد، أنت تقوم برمجياً وفيزيائياً بعملية "الحتمية الإقصائية". هذه النقلة البسيطة تقوم فوراً بإعدام آلاف العوالم والمستقبلات المحتملة التي كانت لتحدث لو حركت قطعة أخرى، وفي الوقت ذاته، تخلق أكواناً كاملة من الردود التي لم تكن ممكنة قبل ثانية واحدة. الشطرنج يعلمنا فلسفة القرار: الاختيار ليس مجرد فعل، بل هو تدمير وبناء في آن واحد، إجبار للكون الصغير على اتخاذ مسار حتمي لا رجعة فيه.
 
-        <a href="index.html" class="back-btn">&#8594; عودة للرئيسية</a>
-    </div>
+## لغة الأرقام: رقم شانون الذي تجاوز ذرات الوجود
 
-    <footer>
-        <p>&copy; 2026 Mshal D. AlRuwaili | Engineering & Code &#9889;&#128187;</p>
-    </footer>
+لتقريب هذه اللانهائية البصرية إلى لغة الأرقام الرياضية، قادنا عالم الرياضيات ومؤسس نظرية المعلومات، كلود شانون، إلى حسابات تقديرية بالغة الضخامة تُعرف اليوم باسم "رقم شانون" (Shannon Number). أثبتت هذه الحسابات أن عدد النقلات المحتملة في مباراة شطرنج نمطية يُقدر بحوالي 10¹²⁰ نقلة محتملة.
 
-</body>
-</html>
+ولكي ندرك ضخامة هذا الرقم من منظور فيزيائي وفلكي عميق: إن عدد الذرات المكونة للكون المرصود بالكامل بكل ما فيه من مجرات، ونجوم، وكواكب، وغبار كوني يُقدر علمياً بحوالي 10⁸⁰ ذرة. هذا يعني هندسياً وإحصائياً أن الاحتمالات الرياضية المتاحة داخل رقعة الشطرنج المحدودة، أكبر بكثير من عدد ذرات الكون المادي الذي نعيش فيه! إنه الدليل القاطع على أن أعمق صور الانفجار العددي واللانهائية يمكن أن تُحبس برمجياً داخل إطار هندسي بسيط.
+
+## تفرّد اللحظة: اللاعب كـ مستكشف كوني
+
+النتيجة الفلسفية الأكثر إثارة لهذه المعادلة هي فكرة "التفرّد البشري" على الرقعة. تاريخياً، لُعبت مليارات المباريات عبر العصور، وفي مرحلة الافتتاحيات (النقلات الأولى)، تكون المسارات مكررة ومعروفة برمجياً ومحفوظة عن ظهر قلب. لكن، بمجرد الدخول في منتصف اللعبة وتجاوز النقلة الخامسة عشرة، تنفجر شجرة الاحتمالات بشكل جنوني.
+
+من الناحية الإحصائية الصرفة: في معظم المباريات التي تتجاوز النقلة العشرين، يكون التشكيل النهائي والوضعية الحالية لقطعك وقطع خصمك على الرقعة هو تشكيل فريد تماماً لم يسبق لأي إنسان في تاريخ البشرية أن وقف عليه أو رآه قبلك. في تلك اللحظة، أنت لست مجرد لاعب يطبق قواعد؛ أنت بمثابة مستكشف كوني تطأ قدمه أرضاً رقمية عذراء لم يمر بها بشر من قبل، تصنع لوحة فكرية فريدة وليدة تلك اللحظة الزمنية الخاصة، ولن تتكرر أبداً في تاريخ الأرض.
