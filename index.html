@@ -59,15 +59,16 @@
             * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
         }
 
-        .hero, .signature-wrap, .split-container, .projects-section, .blog-section {
+        .hero, .signature-wrap, .split-container, .proud-projects-section, .projects-section, .blog-section {
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
         .hero { animation-delay: 0.1s; }
         .signature-wrap { animation-delay: 0.25s; }
         .split-container { animation-delay: 0.35s; }
+        .proud-projects-section { animation-delay: 0.4s; }
         .projects-section { animation-delay: 0.45s; }
-        .blog-section { animation-delay: 0.6s; }
+        .blog-section { animation-delay: 0.5s; }
 
         /* ===== HEADER ===== */
         header {
@@ -231,8 +232,8 @@
         }
         .en-text strong { color: #fff; }
 
-        /* ===== PROJECTS SECTION ===== */
-        .projects-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
+        /* ===== PROUD PROJECTS SECTION ===== */
+        .proud-projects-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
         
         .section-header {
             margin-bottom: 34px;
@@ -242,8 +243,11 @@
             justify-content: space-between;
             align-items: baseline;
         }
+        .section-title {
+            font-size: 1.6em; font-weight: 800; color: #fff;
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+        }
 
-        /* Featured Project (Me'raj) */
         .featured-project {
             background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-elevated) 100%);
             border: 1px solid var(--border-color);
@@ -320,12 +324,13 @@
         }
         .featured-cta:hover { background: #f0d488; transform: translateY(-2px); }
 
-        /* Regular Projects Grid */
+        /* ===== REGULAR PROJECTS SECTION ===== */
+        .projects-section { max-width: 1100px; margin: 60px auto 0 auto; padding: 0 25px; }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 22px;
-            margin-top: 30px;
         }
         .regular-project {
             background-color: var(--card-bg);
@@ -344,7 +349,7 @@
             border-color: var(--accent-line);
             transform: translateY(-4px);
         }
-        .regular-project .project-title { 
+        .regular-project .regular-project-title { 
             font-size: 1.2em; 
             color: var(--text-muted); 
             font-weight: 700;
@@ -362,10 +367,6 @@
         /* ===== BLOG ===== */
         .blog-section { max-width: 1100px; margin: 90px auto 60px auto; padding: 0 25px; }
         
-        .section-title {
-            font-size: 1.6em; font-weight: 800; color: #fff;
-            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
-        }
         .section-count {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.8em;
@@ -465,7 +466,7 @@
             <div class="nav-links">
                 <a href="/">الرئيسية</a>
                 <a href="/about">عني</a>
-                <a href="/#projects">المشاريع</a>
+                <a href="/#proud-projects">المشاريع</a>
                 <a href="/#blog">المدونة</a>
             </div>
         </nav>
@@ -527,10 +528,10 @@
         </div>
     </div>
 
-    <!-- قسم المشاريع الجديد -->
-    <section class="projects-section" id="projects">
+    <!-- قسم مشاريع أعتز بها -->
+    <section class="proud-projects-section" id="proud-projects">
         <div class="section-header">
-            <h2 class="section-title">المشاريع التقنية / Projects</h2>
+            <h2 class="section-title">مشاريع أعتز بها / Proud Projects</h2>
         </div>
 
         <!-- المشروع الرئيسي: مِعْراج -->
@@ -550,6 +551,13 @@
                 <a href="https://play.google.com/store/apps/details?id=com.mishal.miraj" target="_blank" class="featured-cta">حمّله من المتجر ←</a>
             </div>
         </div>
+    </section>
+
+    <!-- قسم المشاريع العامة -->
+    <section class="projects-section" id="projects">
+        <div class="section-header">
+            <h2 class="section-title">المشاريع / Projects</h2>
+        </div>
 
         <!-- شبكة المشاريع القادمة (مساحات فارغة احترافية) -->
         <div class="projects-grid">
@@ -559,7 +567,7 @@
                 <div class="empty-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                 </div>
-                <h3 class="project-title">مشروع قيد التطوير</h3>
+                <h3 class="regular-project-title">مشروع قيد التطوير</h3>
                 <p class="project-desc" style="font-size: 0.9em; color: var(--text-faint);">مساحة مخصصة لمشروع قادم يدمج بين منطق الأنظمة والبرمجة.</p>
                 <div class="tech-stack">
                     <span class="tech-pill">TBA</span>
@@ -571,7 +579,7 @@
                 <div class="empty-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                 </div>
-                <h3 class="project-title">مساحة عمل</h3>
+                <h3 class="regular-project-title">مساحة عمل</h3>
                 <p class="project-desc" style="font-size: 0.9em; color: var(--text-faint);">فكرة جديدة في طور التخطيط الهندسي والهيكلة.</p>
                 <div class="tech-stack">
                     <span class="tech-pill">System Logic</span>
