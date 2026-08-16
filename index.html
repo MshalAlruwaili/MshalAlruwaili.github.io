@@ -59,15 +59,14 @@
             * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
         }
 
-        .hero, .signature-wrap, .split-container, .expertise-section, .featured-section, .blog-section {
+        .hero, .signature-wrap, .split-container, .projects-section, .blog-section {
             animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
         .hero { animation-delay: 0.1s; }
         .signature-wrap { animation-delay: 0.25s; }
         .split-container { animation-delay: 0.35s; }
-        .expertise-section { animation-delay: 0.45s; }
-        .featured-section { animation-delay: 0.5s; }
+        .projects-section { animation-delay: 0.45s; }
         .blog-section { animation-delay: 0.6s; }
 
         /* ===== HEADER ===== */
@@ -232,63 +231,80 @@
         }
         .en-text strong { color: #fff; }
 
-        /* ===== PROJECTS ===== */
-        .expertise-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
-        .expertise-grid {
+        /* ===== PROJECTS SECTION ===== */
+        .projects-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
+        
+        .section-header {
+            margin-bottom: 34px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 18px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            justify-content: space-between;
+            align-items: baseline;
         }
-        .chip {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.82em;
-            color: var(--text-muted);
-            background: var(--bg-elevated);
-            border: 1px solid var(--border-color);
-            padding: 9px 16px;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            letter-spacing: 0.3px;
-        }
-        .chip .pin { width: 6px; height: 6px; border-radius: 50%; background: var(--circuit); flex-shrink: 0; }
 
-        /* ===== FEATURED PROJECT ===== */
-        .featured-section { max-width: 1100px; margin: 90px auto 0 auto; padding: 0 25px; }
-        .featured-card {
+        /* Featured Project (Me'raj) */
+        .featured-project {
             background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-elevated) 100%);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 8px;
             padding: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-top: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .featured-card::before {
+        .featured-project::before {
             content: "";
             position: absolute;
-            top: 0; right: 0;
-            width: 220px; height: 220px;
+            top: -50px; right: -50px;
+            width: 250px; height: 250px;
             background: radial-gradient(circle, var(--accent-dim), transparent 70%);
             pointer-events: none;
         }
-        .featured-text { max-width: 620px; }
-        .featured-eyebrow {
+        .project-eyebrow {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.72em;
-            color: var(--accent);
-            letter-spacing: 2px;
+            font-size: 0.75em;
+            color: var(--circuit);
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
         }
-        .featured-title { font-size: 1.6em; font-weight: 800; color: #fff; margin-bottom: 12px; font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; }
-        .featured-desc { color: var(--text-muted); font-size: 0.98em; }
+        .project-title { 
+            font-size: 1.8em; 
+            font-weight: 800; 
+            color: #fff; 
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; 
+        }
+        .project-desc { 
+            color: var(--text-muted); 
+            font-size: 1.05em; 
+            max-width: 750px; 
+            line-height: 1.7; 
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .tech-pill {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75em;
+            color: var(--text-faint);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            padding: 5px 14px;
+            border-radius: 50px;
+        }
+        .tech-pill.highlight {
+            color: var(--accent);
+            border-color: var(--accent-line);
+            background: var(--accent-dim);
+        }
         .featured-cta {
             background: var(--accent);
             color: #14161a;
@@ -300,20 +316,52 @@
             white-space: nowrap;
             transition: 0.25s;
             flex-shrink: 0;
+            display: inline-block;
         }
         .featured-cta:hover { background: #f0d488; transform: translateY(-2px); }
 
-        /* ===== BLOG ===== */
-        .blog-section { max-width: 1100px; margin: 90px auto 60px auto; padding: 0 25px; }
-        .section-header {
-            margin-bottom: 34px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 18px;
+        /* Regular Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+            margin-top: 30px;
+        }
+        .regular-project {
+            background-color: var(--card-bg);
+            border: 1px dashed var(--border-color);
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0.6;
+        }
+        .regular-project:hover {
+            opacity: 1;
+            border-style: solid;
+            border-color: var(--accent-line);
+            transform: translateY(-4px);
+        }
+        .regular-project .project-title { 
+            font-size: 1.2em; 
+            color: var(--text-muted); 
+            font-weight: 700;
+        }
+        .empty-icon {
+            width: 45px; height: 45px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-faint);
+            margin-bottom: 5px;
         }
 
+        /* ===== BLOG ===== */
+        .blog-section { max-width: 1100px; margin: 90px auto 60px auto; padding: 0 25px; }
+        
         .section-title {
             font-size: 1.6em; font-weight: 800; color: #fff;
             font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
@@ -405,7 +453,6 @@
             .hero h1 { font-size: 2.1em; }
             nav { flex-direction: column; gap: 14px; }
             .nav-links a { margin: 0 10px; }
-            .featured-card { flex-direction: column; align-items: flex-start; }
             .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
@@ -480,26 +527,57 @@
         </div>
     </div>
 
-    <section class="expertise-section" id="projects">
-        <div class="section-header" style="border-bottom: none; margin-bottom: 20px; padding-bottom: 0;">
-            <h2 class="section-title" style="font-size: 1.3em; color: var(--text-muted);">المشاريع التقنية / Projects</h2>
+    <!-- قسم المشاريع الجديد -->
+    <section class="projects-section" id="projects">
+        <div class="section-header">
+            <h2 class="section-title">المشاريع التقنية / Projects</h2>
         </div>
-        <div class="expertise-grid">
-            <span class="chip"><span class="pin"></span>تطبيق مِعْراج (Android)</span>
-            <span class="chip"><span class="pin"></span>تطبيقات Wear OS</span>
-            <span class="chip"><span class="pin"></span>Power System Logic</span>
-            <span class="chip"><span class="pin"></span>GitHub Portfolio</span>
-        </div>
-    </section>
 
-    <section class="featured-section">
-        <div class="featured-card">
-            <div class="featured-text">
-                <span class="featured-eyebrow">تطبيق منشور · Google Play</span>
-                <div class="featured-title">مِعْراج — تدبر النصوص بلمسة هندسية</div>
-                <p class="featured-desc">منصة مجانية بالكامل وخالية من الإعلانات، مصممة ببساطة متناهية لتدبر النصوص مع أدوات يومية.</p>
+        <!-- المشروع الرئيسي: مِعْراج -->
+        <div class="featured-project">
+            <span class="project-eyebrow">v2.9.0 · Offline-First · Target SDK 35</span>
+            <div class="project-title">مِعْراج — تدبر النصوص بلمسة هندسية</div>
+            <p class="project-desc">
+                تطبيق أندرويد متكامل ومجاني بالكامل، مصمم بهيكلة قوية ليعمل بدون الحاجة للإنترنت. يهدف إلى تسهيل تدبر النصوص اليومية بواجهة خالية من التشتت والإعلانات، معتمداً على أحدث معايير تطوير واجهات المستخدم وقواعد البيانات المحلية.
+            </p>
+            <div class="tech-stack">
+                <span class="tech-pill highlight">Kotlin</span>
+                <span class="tech-pill highlight">Jetpack Compose (M3)</span>
+                <span class="tech-pill">Room Database</span>
+                <span class="tech-pill">StateFlow</span>
             </div>
-            <a href="https://play.google.com/store/apps/details?id=com.mishal.miraj" target="_blank" class="featured-cta">حمّله من المتجر ←</a>
+            <div>
+                <a href="https://play.google.com/store/apps/details?id=com.mishal.miraj" target="_blank" class="featured-cta">حمّله من المتجر ←</a>
+            </div>
+        </div>
+
+        <!-- شبكة المشاريع القادمة (مساحات فارغة احترافية) -->
+        <div class="projects-grid">
+            
+            <!-- مشروع فارغ 1 -->
+            <div class="regular-project">
+                <div class="empty-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">مشروع قيد التطوير</h3>
+                <p class="project-desc" style="font-size: 0.9em; color: var(--text-faint);">مساحة مخصصة لمشروع قادم يدمج بين منطق الأنظمة والبرمجة.</p>
+                <div class="tech-stack">
+                    <span class="tech-pill">TBA</span>
+                </div>
+            </div>
+
+            <!-- مشروع فارغ 2 -->
+            <div class="regular-project">
+                <div class="empty-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3 class="project-title">مساحة عمل</h3>
+                <p class="project-desc" style="font-size: 0.9em; color: var(--text-faint);">فكرة جديدة في طور التخطيط الهندسي والهيكلة.</p>
+                <div class="tech-stack">
+                    <span class="tech-pill">System Logic</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -526,15 +604,14 @@
     <script>
         const myBlogPosts = [
             {
-    title: "المادة المظلمة: لغز الحبل الخفي الذي يمسك الكون",
-    date: "3 أبريل 2026",
-    category: "فيزياء وفلك",
-    excerpt: "رحلة فلسفية وعلمية تبدأ من تفاحة نيوتن، تمر بنسيج أينشتاين، وتنتهي عند أعظم لغز في الكون: المادة المظلمة التي تمسك مجراتنا ولا نراها.",
-    link: "/blogs/post.html?file=dark-matter",
-    btnText: "اقرأ المزيد ←",
-    dir: "rtl"
-},
-
+                title: "المادة المظلمة: لغز الحبل الخفي الذي يمسك الكون",
+                date: "3 أبريل 2026",
+                category: "فيزياء وفلك",
+                excerpt: "رحلة فلسفية وعلمية تبدأ من تفاحة نيوتن، تمر بنسيج أينشتاين، وتنتهي عند أعظم لغز في الكون: المادة المظلمة التي تمسك مجراتنا ولا نراها.",
+                link: "/blogs/post.html?file=dark-matter",
+                btnText: "اقرأ المزيد ←",
+                dir: "rtl"
+            },
             {
                 title: "هندسة المحيطات الكونية: كيف يبرمج القمر والشمس حركة المد والجزر؟",
                 date: "14 أغسطس 2025",
@@ -562,7 +639,6 @@
                 btnText: "اقرأ المزيد ←",
                 dir: "rtl"
             }
-        
         ];
 
         function renderBlogs() {
