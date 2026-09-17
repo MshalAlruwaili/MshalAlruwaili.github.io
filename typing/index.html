@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Mushal D. AlRuwaili">
+<title>سرعة الطباعة | م. مشعل الرويلي</title>
+<meta name="description" content="اختبر وطور سرعة الطباعة لديك باللغتين العربية والإنجليزية. تمرين كتابة احترافي.">
+<meta name="keywords" content="سرعة الطباعة, تمرين كتابة, اختبار سرعة الكتابة, طباعة عربي, Arabic typing test, English typing practice, WPM test">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#1B2027;
+    --bg-raised:#242B35;
+    --bg-sunken:#161A20;
+    --line:#333C49;
+    --ink:#E8E6E1;
+    --ink-dim:#8B92A0;
+    --ink-faint:#5A6270;
+    --amber:#D4A15C;
+    --amber-dim:#8A6B3E;
+    --sage:#8FB58C;
+    --terracotta:#C4736B;
+    --radius:10px;
+    color-scheme: dark;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic','IBM Plex Mono',sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:48px 20px 80px;
+  }
+  .wrap{ width:100%; max-width:760px; }
+
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:36px;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .brand-mark{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    color:var(--amber);
+    letter-spacing:.04em;
+    border:1px solid var(--amber-dim);
+    border-radius:6px;
+    padding:2px 8px;
+  }
+  h1{
+    font-size:22px;
+    font-weight:600;
+    margin:0;
+  }
+  .controls-group {
+    display: flex;
+    gap: 10px;
+  }
+  .lang-toggle{
+    display:flex;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:3px;
+    gap:2px;
+  }
+  .lang-toggle button{
+    border:none;
+    background:transparent;
+    color:var(--ink-dim);
+    font-family:inherit;
+    font-size:14px;
+    padding:7px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--amber);
+    color:var(--bg-sunken);
+    font-weight:600;
+  }
+
+  .stats{
+    display:flex;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .stat{
+    flex:1;
+    background:var(--bg-raised);
+    padding:16px 14px;
+    text-align:center;
+  }
+  .stat-label{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:6px;
+  }
+  .stat-value{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:26px;
+    font-weight:600;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .stat-value.accent{ color:var(--amber); }
+
+  .stage{
+    position:relative;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:34px 30px;
+    margin-bottom:18px;
+    cursor:text;
+  }
+  .stage.locked{ opacity:.55; }
+  .text-display{
+    font-size:22px;
+    line-height:1.9;
+    font-family:'IBM Plex Mono','IBM Plex Sans Arabic',monospace;
+  }
+  .text-display.lang-ar{
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    direction:rtl;
+    text-align:right;
+    font-size:23px;
+  }
+  .text-display.lang-en{
+    direction:ltr;
+    text-align:left;
+  }
+  .ch{ color:var(--ink-faint); border-bottom:2px solid transparent; }
+  .ch.correct{ color:var(--sage); }
+  .ch.incorrect{ color:var(--terracotta); border-bottom-color:var(--terracotta); }
+  .ch.current{ background:var(--amber); color:var(--bg-sunken); border-radius:3px; }
+
+  .hidden-input{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity:0;
+    cursor:text;
+    z-index: 10;
+  }
+
+  .stage-hint{
+    text-align:center;
+    color:var(--ink-faint);
+    font-size:13px;
+    margin-bottom:28px;
+  }
+
+  .controls{
+    display:flex;
+    justify-content:center;
+    margin-bottom:44px;
+  }
+  .restart-btn{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-dim);
+    font-family:inherit;
+    font-size:14px;
+    padding:9px 22px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .restart-btn:hover{
+    border-color:var(--amber-dim);
+    color:var(--amber);
+  }
+
+  .history-head{
+    font-size:14px;
+    color:var(--ink-dim);
+    margin-bottom:12px;
+    padding-inline-start:2px;
+  }
+  .history-list{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .history-row{
+    background:var(--bg-raised);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    font-size:14px;
+  }
+  .history-row .h-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--ink-dim);
+  }
+  .history-row .h-lang{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:1px 6px;
+  }
+  .history-row .h-metrics{
+    display:flex;
+    gap:18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .history-row .h-wpm{ color:var(--amber); font-weight:600; }
+  .history-empty{
+    background:var(--bg-raised);
+    padding:22px 16px;
+    text-align:center;
+    color:var(--ink-faint);
+    font-size:13px;
+  }
+
+  .result-banner{
+    display:none;
+    text-align:center;
+    padding:22px;
+    margin-bottom:18px;
+    background:var(--bg-raised);
+    border:1px solid var(--amber-dim);
+    border-radius:var(--radius);
+  }
+  .result-banner.show{ display:block; }
+  .result-banner .r-title{
+    color:var(--ink-dim);
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .result-banner .r-numbers{
+    display:flex;
+    justify-content:center;
+    gap:34px;
+  }
+  .result-banner .r-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:30px;
+    font-weight:600;
+    color:var(--amber);
+  }
+  .result-banner .r-num-label{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:4px;
+  }
+  .footer-credit {
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 13px;
+    margin-top: 40px;
+  }
+
+  @media (max-width:520px){
+    .stats{ flex-wrap:wrap; }
+    .stat{ min-width:33%; }
+    .stage{ padding:24px 18px; }
+    .text-display{ font-size:19px; }
+    .result-banner .r-numbers{ gap:20px; }
+    .controls-group { flex-direction: column; align-items: flex-end; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <span class="brand-mark">WPM</span>
+      <h1 id="title">سرعة الطباعة</h1>
+    </div>
+    <div class="controls-group">
+      <div class="lang-toggle">
+        <button id="btn-punct" class="active">ترقيم ✔</button>
+      </div>
+      <div class="lang-toggle">
+        <button id="btn-ar" class="active">العربية</button>
+        <button id="btn-en">English</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label" id="lbl-time">الوقت المتبقي</div>
+      <div class="stat-value accent" id="val-time">60</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" id="lbl-wpm">الكلمات/دقيقة</div>
+      <div class="stat-value" id="val-wpm">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" id="lbl-acc">الدقة</div>
+      <div class="stat-value" id="val-acc">100%</div>
+    </div>
+  </div>
+
+  <div class="result-banner" id="result-banner">
+    <div class="r-title" id="result-title">انتهى التمرين</div>
+    <div class="r-numbers">
+      <div>
+        <div class="r-num" id="result-wpm">0</div>
+        <div class="r-num-label" id="result-wpm-label">كلمة/دقيقة</div>
+      </div>
+      <div>
+        <div class="r-num" id="result-acc">0%</div>
+        <div class="r-num-label" id="result-acc-label">دقة</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="text-display lang-ar" id="text-display"></div>
+    <input type="text" class="hidden-input" id="hidden-input" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+  </div>
+  <div class="stage-hint" id="stage-hint">ابدأ بالكتابة لتشغيل المؤقّت · اضغط في أي مكان للتركيز</div>
+
+  <div class="controls">
+    <button class="restart-btn" id="restart-btn">نص جديد</button>
+  </div>
+
+  <div class="history-head" id="history-head">النتائج السابقة</div>
+  <div class="history-list" id="history-list"></div>
+
+  <div class="footer-credit" id="footer-credit">تطوير م. مشعل الرويلي</div>
+
+</div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'typing_test_results_v4';
+
+  const texts = {
+    ar: [
+      "البرمجة ليست مجرد كتابة أكواد معقدة، بل هي فن لحل المشكلات بطرق مبتكرة ومنطقية. عندما تواجه تحدياً برمجياً، خذ وقتاً للتفكير في الخطوات قبل البدء بكتابة أي حرف. التنظيم والتخطيط المسبق يوفران عليك الكثير من الوقت والجهد، ويساعدانك على بناء تطبيقات قوية ومستقرة تلبي احتياجات المستخدمين بكفاءة عالية جداً.",
+      "تعلم مهارة الطباعة السريعة يعزز من إنتاجيتك بشكل ملحوظ في عصرنا الرقمي الحالي. بمجرد أن تعتاد أصابعك على أماكن الحروف دون النظر إلى لوحة المفاتيح، سيصبح بإمكانك نقل أفكارك إلى الشاشة بسرعة وسلاسة. الاستمرارية في التدريب اليومي هي المفتاح الأساسي للوصول إلى دقة عالية وسرعة استثنائية في إنجاز مهامك.",
+      "تطوير الذات يتطلب رغبة صادقة في التعلم المستمر وتجاوز العقبات التي تواجهنا في حياتنا اليومية. لا تتردد في استكشاف مجالات جديدة وتوسيع مداركك المعرفية كلما سنحت لك الفرصة. تذكر دائماً أن النجاح لا يأتي بين عشية وضحاها، بل هو نتيجة طبيعية للعمل الجاد، والمثابرة، والالتزام الثابت بتحقيق الأهداف المرسومة.",
+      "استكشاف الفضاء يمثل واحدة من أعظم المغامرات البشرية. عندما ننظر إلى النجوم، ندرك مدى اتساع هذا الكون المذهل. التكنولوجيا الحديثة مكنتنا من إرسال مركبات فضائية لجمع بيانات دقيقة عن كواكب بعيدة. كل اكتشاف جديد يفتح باباً لأسئلة لا حصر لها، ويثبت أن خيال الإنسان لا يعرف أي حدود على الإطلاق.",
+      "السفر وتأمل الطبيعة يمنحان العقل صفاءً استثنائياً بعيداً عن صخب المدينة وضجيج الحياة الحديثة. المشي بين الأشجار الكثيفة أو الاستماع لصوت أمواج البحر يعيد شحن طاقتك الإيجابية. هذه اللحظات الهادئة تساعدك على إعادة ترتيب أفكارك، وتلهمك للعودة إلى عملك بشغف أكبر وتركيز أعمق لتحقيق أهدافك اليومية بثبات.",
+      "الفنون بمختلف أشكالها، سواء كانت رسماً أو موسيقى أو تصويراً، تعكس الجانب الأجمل من التجربة الإنسانية. الإبداع ليس حكراً على المحترفين فقط، بل هو طريقة رائعة للتعبير عن المشاعر والتخلص من التوتر. جرب أن تمارس هواية فنية جديدة في أوقات فراغك، وستلاحظ كيف تنعكس هذه التجربة على مزاجك وطريقة تفكيرك.",
+      "كوب القهوة الصباحي ليس مجرد مشروب دافئ، بل هو طقس يومي يساعد الكثيرين على الاستعداد لبدء يوم جديد بنشاط. رائحة البن المحمص تمنح شعوراً باليقظة والتركيز. سواء كنت تفضلها سوداء قوية أو مع الحليب، فإن الدقائق القليلة التي تقضيها في احتساء قهوتك تعد استراحة ذهنية ضرورية قبل الانخراط في المهام.",
+      "الذكاء الاصطناعي أصبح جزءاً لا يتجزأ من حياتنا، ويسهم في تسريع الكثير من العمليات الروتينية التي كانت تستغرق ساعات طويلة. من المهم أن نتعلم كيف نستخدم هذه الأدوات بذكاء لتسهيل أعمالنا بدلاً من الخوف منها. التطور التقني المستمر يتطلب مرونة في التفكير واستعداداً دائماً لاكتساب مهارات جديدة تناسب متطلبات العصر.",
+      "الرياضة المنتظمة ليست مجرد وسيلة لبناء العضلات أو إنقاص الوزن، بل هي درع واقٍ للصحة النفسية. ممارسة الجري أو المشي السريع لمدة نصف ساعة تفرز هرمونات السعادة وتقلل من ضغوط العمل. اجعل النشاط البدني جزءاً لا يتجزأ من روتينك، وسترى كيف يتغير مستوى نشاطك وتتحسن جودة نومك بشكل مذهل.",
+      "قراءة الكتب تفتح أمامك عوالم مدهشة دون أن تغادر غرفتك. كل صفحة تقرأها تضيف لك مفردات جديدة وتوسع من خيالك وطريقة استيعابك للأمور. لا يهم إن كنت تفضل الروايات الخيالية أو الكتب العلمية، المهم أن تجعل القراءة عادة يومية تغذي بها عقلك كما تغذي وجبات الطعام جسدك تماماً.",
+      "الطبخ في المنزل متعة حقيقية تتجاوز مجرد إعداد وجبة لسد الجوع. اختيار المكونات الطازجة ومزج النكهات والتوابل بحب يعطيك شعوراً بالإنجاز. الاعتماد على الأكل الصحي يمنح جسمك الفيتامينات اللازمة، ويقلل من الشعور بالخمول، مما ينعكس إيجابياً على أدائك اليومي وقدرتك على التركيز في مهامك المعقدة.",
+      "فن التصوير الفوتوغرافي يعلمنا كيف نرى الجمال في التفاصيل الصغيرة التي قد يتجاهلها الآخرون. التقاط لحظة عابرة وتجميدها في صورة هو وسيلة رائعة لحفظ الذكريات والمشاعر. لست بحاجة إلى كاميرا احترافية باهظة الثمن لتبدأ، فعدسة هاتفك المحمول كافية جداً لتوثيق زوايا مذهلة من حياتك اليومية ومشاركتها مع من تحب.",
+      "أعماق المحيطات تخفي أسراراً تفوق الخيال، وتضم مخلوقات بحرية ذات ألوان وأشكال هندسية غريبة. الغوص في هذه العوالم الزرقاء المظلمة يعطينا لمحة عن تنوع الحياة البيولوجية المذهل على كوكب الأرض. حماية هذه الشعاب المرجانية والبيئات البحرية مسؤولية جماعية لضمان استمرار التوازن البيئي للأجيال القادمة.",
+      "روايات الخيال العلمي لطالما كانت النافذة التي نستشرف منها مستقبل البشرية. الكثير من التقنيات التي نستخدمها اليوم، مثل الهواتف الذكية والذكاء الاصطناعي، كانت مجرد أفكار خيالية في قصص قديمة. هذا يثبت أن الخيال هو البذرة الأولى لكل ابتكار حقيقي، وأن العقل البشري قادر على تحويل المستحيل إلى واقع ملموس.",
+      "تعلم العزف على آلة موسيقية جديدة يعتبر تمريناً ممتازاً لتنشيط جانبي الدماغ معاً. حركة الأصابع السريعة على مفاتيح البيانو أو أوتار الجيتار تتطلب تركيزاً وتناسقاً حركياً عالياً. الموسيقى لغة عالمية لا تحتاج إلى ترجمة، وتساعد في التعبير عن المشاعر العميقة وتخفيف التوتر المتراكم بعد يوم عمل شاق.",
+      "السفر واستكشاف دول جديدة ليس مجرد ترفيه، بل هو مدرسة حقيقية لتعلم قبول الاختلاف. عندما تختلط بثقافات غير مألوفة وتتذوق أطعمة محلية غريبة، تتسع نظرتك للحياة وتصبح أكثر تفهماً وتسامحاً. كل رحلة تخوضها تترك في شخصيتك أثراً عميقاً، وتصنع لك ذكريات لا تُنسى ترافقك طوال مسيرة حياتك."
+    ],
+    en: [
+      "Building reliable software is a journey of continuous problem solving. Every bug you encounter is a chance to learn something new. Write clean code, document your logic, and always test your work thoroughly. With patience and consistent practice, complex challenges will gradually turn into simple and manageable daily tasks.",
+      "Developing a fast touch typing skill saves countless hours of work. When your fingers know exactly where to move instinctively, your brain can focus entirely on creating ideas rather than searching for keys. Accuracy should always come first, and natural typing speed will naturally follow with enough daily practice.",
+      "Modern web development requires both logic and creativity. Designing intuitive user interfaces helps people navigate applications effortlessly. Always keep performance in mind, minimizing load times and ensuring smooth interactions. The best developers balance aesthetic appeal with robust functionality, creating digital experiences that are both beautiful and incredibly powerful.",
+      "Exploring the cosmos is perhaps the greatest human adventure. Looking up at the stars reminds us of the infinite possibilities waiting to be discovered. Modern technology allows us to send probes to distant planets, gathering incredible data that proves human imagination truly has no limits whatsoever.",
+      "Spending time in nature offers an exceptional mental reset, far away from the noisy demands of modern city life. Walking through a quiet forest or listening to the ocean waves helps recharge your energy. These peaceful moments inspire you to return to your daily tasks with renewed focus and passion.",
+      "Art in all its forms, whether painting, music, or photography, beautifully captures the human experience. Creativity is not just for professionals; it is a fantastic outlet for expressing emotions and reducing stress. Taking up a creative hobby can noticeably improve your mood and shift your overall perspective.",
+      "A morning cup of coffee is more than just a warm drink; it is a daily ritual that prepares you for the hours ahead. The rich aroma of freshly roasted beans provides a sense of clarity. Taking a few minutes to enjoy your coffee is a necessary mental break.",
+      "Regular exercise is not just about building muscle or losing weight; it is a powerful shield for your mental health. A brisk thirty-minute walk can release happy hormones and reduce daily stress. Make physical activity an integral part of your routine, and watch your energy and sleep quality improve dramatically.",
+      "Reading books opens up astonishing new worlds without you ever having to leave your room. Every page you read adds new vocabulary and broadens your imagination and comprehension. Whether you prefer fantasy novels or scientific literature, making reading a daily habit nourishes your mind just as healthy food nourishes your body.",
+      "Cooking at home is a true joy that goes far beyond simply preparing a meal. Selecting fresh ingredients and mixing spices with care gives you a profound sense of accomplishment. Relying on healthy, home-cooked food provides your body with essential vitamins, reduces sluggishness, and positively impacts your daily focus.",
+      "The art of photography teaches us to see beauty in the tiny details that others might easily overlook. Freezing a fleeting moment in a picture is a wonderful way to preserve memories and emotions. You do not need an expensive professional camera; your smartphone lens is perfectly capable of capturing stunning angles.",
+      "The deep ocean conceals unimaginable secrets, hosting marine creatures with bizarre shapes and glowing colors. Diving into these dark blue realms gives us a glimpse of Earth's incredible biological diversity. Protecting these delicate coral reefs and marine environments is a collective responsibility to ensure ecological balance for future generations.",
+      "Science fiction has always been the window through which we envision the future of humanity. Many technologies we use today, like smart devices and voice assistants, were once mere fictional concepts in old stories. This proves that imagination is the very first seed of every real and tangible innovation.",
+      "Learning to play a new musical instrument is an excellent exercise for activating both sides of the brain simultaneously. The rapid finger movements on piano keys or guitar strings require intense focus and coordination. Music is a universal language that helps express deep emotions and relieves accumulated daily stress.",
+      "Traveling and exploring new countries is not mere entertainment; it is a profound school for embracing diversity. When you mix with unfamiliar cultures and taste exotic local foods, your perspective broadens significantly. Every journey you undertake leaves a lasting mark on your personality and creates truly unforgettable lifelong memories.",
+      "Artificial intelligence has seamlessly integrated into our daily routines, drastically speeding up tasks that used to take hours. Instead of fearing these advancements, we should learn to utilize them smartly to boost our productivity. Continuous technological progress simply requires an adaptable mindset and a willingness to learn new skills."
+    ]
+  };
+
+  const strings = {
+    ar: {
+      title: "سرعة الطباعة",
+      timeLabel: "الوقت المتبقي",
+      wpmLabel: "الكلمات/دقيقة",
+      accLabel: "الدقة",
+      hintIdle: "ابدأ بالكتابة لتشغيل المؤقّت · اضغط في أي مكان للتركيز",
+      hintRunning: "استمر... التوقيت يعمل الآن",
+      hintLocked: "انتهى الوقت — اضغط «نص جديد» للمحاولة مجدداً",
+      restart: "نص جديد",
+      historyHead: "النتائج السابقة",
+      resultTitle: "انتهى التمرين",
+      resultWpmLabel: "كلمة/دقيقة",
+      resultAccLabel: "دقة",
+      empty: "لا توجد نتائج بعد — أكمل تمريناً لتظهر هنا",
+      punctOn: "ترقيم ✔",
+      punctOff: "ترقيم ✖",
+      footer: "تطوير م. مشعل الرويلي"
+    },
+    en: {
+      title: "Type Pace",
+      timeLabel: "Time left",
+      wpmLabel: "WPM",
+      accLabel: "Accuracy",
+      hintIdle: "Start typing to begin the timer · click anywhere to focus",
+      hintRunning: "Keep going... the clock is running",
+      hintLocked: "Time's up — click \"New text\" to try again",
+      restart: "New text",
+      historyHead: "Previous results",
+      resultTitle: "Session complete",
+      resultWpmLabel: "words / min",
+      resultAccLabel: "accuracy",
+      empty: "No results yet — finish a session to see it here",
+      punctOn: "Punct ✔",
+      punctOff: "Punct ✖",
+      footer: "Developed by Mushal D. AlRuwaili"
+    }
+  };
+
+  let lang = 'ar';
+  let usePunct = true;
+  let targetText = '';
+  let targetTextArr = [];
+  let startTime = null;
+  let timerId = null;
+  let timeLeft = 60;
+  let finished = false;
+  let typed = []; 
+
+  const els = {
+    title: document.getElementById('title'),
+    btnAr: document.getElementById('btn-ar'),
+    btnEn: document.getElementById('btn-en'),
+    btnPunct: document.getElementById('btn-punct'),
+    lblTime: document.getElementById('lbl-time'),
+    lblWpm: document.getElementById('lbl-wpm'),
+    lblAcc: document.getElementById('lbl-acc'),
+    valTime: document.getElementById('val-time'),
+    valWpm: document.getElementById('val-wpm'),
+    valAcc: document.getElementById('val-acc'),
+    stage: document.getElementById('stage'),
+    textDisplay: document.getElementById('text-display'),
+    hiddenInput: document.getElementById('hidden-input'),
+    stageHint: document.getElementById('stage-hint'),
+    restartBtn: document.getElementById('restart-btn'),
+    historyHead: document.getElementById('history-head'),
+    historyList: document.getElementById('history-list'),
+    resultBanner: document.getElementById('result-banner'),
+    resultTitle: document.getElementById('result-title'),
+    resultWpm: document.getElementById('result-wpm'),
+    resultWpmLabel: document.getElementById('result-wpm-label'),
+    resultAcc: document.getElementById('result-acc'),
+    resultAccLabel: document.getElementById('result-acc-label'),
+    footerCredit: document.getElementById('footer-credit')
+  };
+
+  function pickText(){
+    const pool = texts[lang];
+    let selected = pool[Math.floor(Math.random() * pool.length)];
+    if (!usePunct) {
+      selected = selected.replace(/[.,،؛:؟!]/g, '').replace(/\s{2,}/g, ' ').trim();
+    }
+    return selected;
+  }
+
+  function applyLangStrings(){
+    const s = strings[lang];
+    els.title.textContent = s.title;
+    document.title = (lang === 'ar' ? 'سرعة الطباعة | م. مشعل الرويلي' : 'Type Pace | Mushal D. AlRuwaili');
+    els.lblTime.textContent = s.timeLabel;
+    els.lblWpm.textContent = s.wpmLabel;
+    els.lblAcc.textContent = s.accLabel;
+    els.stageHint.textContent = s.hintIdle;
+    els.restartBtn.textContent = s.restart;
+    els.historyHead.textContent = s.historyHead;
+    els.resultTitle.textContent = s.resultTitle;
+    els.resultWpmLabel.textContent = s.resultWpmLabel;
+    els.resultAccLabel.textContent = s.resultAccLabel;
+    els.footerCredit.textContent = s.footer;
+    els.btnPunct.textContent = usePunct ? s.punctOn : s.punctOff;
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+  }
+
+  function renderText(){
+    els.textDisplay.className = 'text-display ' + (lang === 'ar' ? 'lang-ar' : 'lang-en');
+    els.textDisplay.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < targetTextArr.length; i++){
+      const span = document.createElement('span');
+      span.className = 'ch';
+      span.textContent = targetTextArr[i];
+      frag.appendChild(span);
+    }
+    els.textDisplay.appendChild(frag);
+  }
+
+  function updateDisplayFromTyped(){
+    const chars = els.textDisplay.children;
+    for (let i = 0; i < chars.length; i++){
+      const span = chars[i];
+      span.classList.remove('correct','incorrect','current');
+      
+      if (i < typed.length){
+        span.classList.add(typed[i] === targetTextArr[i] ? 'correct' : 'incorrect');
+      } else if (i === typed.length){
+        span.classList.add('current');
+      }
+    }
+  }
+
+  function computeLiveStats(){
+    const elapsedMin = startTime ? (Date.now() - startTime) / 60000 : 0;
+    let correctChars = 0;
+    for (let i = 0; i < typed.length; i++){
+      if (typed[i] === targetTextArr[i]) correctChars++;
+    }
+    const wpm = elapsedMin > 0 ? Math.round((correctChars / 5) / elapsedMin) : 0;
+    const acc = typed.length > 0 ? Math.round((correctChars / Math.max(typed.length, 1)) * 100) : 100;
+    els.valWpm.textContent = wpm;
+    els.valAcc.textContent = acc + '%';
+    return { wpm, acc };
+  }
+
+  function startTimer(){
+    if (timerId) return;
+    startTime = Date.now();
+    els.stageHint.textContent = strings[lang].hintRunning;
+    timerId = setInterval(() => {
+      const elapsed = (Date.now() - startTime) / 1000;
+      timeLeft = Math.max(0, Math.round(60 - elapsed));
+      els.valTime.textContent = timeLeft;
+      computeLiveStats();
+      if (timeLeft <= 0){
+        endSession();
+      }
+    }, 200);
+  }
+
+  function endSession(){
+    if (finished) return;
+    finished = true;
+    clearInterval(timerId);
+    timerId = null;
+    els.hiddenInput.blur();
+    els.hiddenInput.disabled = true;
+    els.stage.classList.add('locked');
+    els.stageHint.textContent = strings[lang].hintLocked;
+    const stats = computeLiveStats();
+    els.resultWpm.textContent = stats.wpm;
+    els.resultAcc.textContent = stats.acc + '%';
+    els.resultBanner.classList.add('show');
+    saveResult(stats.wpm, stats.acc);
+    renderHistory();
+  }
+
+  function saveResult(wpm, acc){
+    let results = [];
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) results = JSON.parse(raw);
+    } catch(e){ results = []; }
+    results.unshift({
+      wpm: wpm,
+      acc: acc,
+      lang: lang,
+      date: new Date().toISOString()
+    });
+    results = results.slice(0, 12);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+    } catch(e){ }
+  }
+
+  function formatDate(iso){
+    try {
+      const d = new Date(iso);
+      const opts = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      return d.toLocaleString(lang === 'ar' ? 'ar' : 'en-US', opts);
+    } catch(e){ return ''; }
+  }
+
+  function renderHistory(){
+    let results = [];
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) results = JSON.parse(raw);
+    } catch(e){ results = []; }
+
+    els.historyList.innerHTML = '';
+    if (!results.length){
+      const empty = document.createElement('div');
+      empty.className = 'history-empty';
+      empty.textContent = strings[lang].empty;
+      els.historyList.appendChild(empty);
+      return;
+    }
+    results.forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'history-row';
+      const left = document.createElement('div');
+      left.className = 'h-left';
+      const langTag = document.createElement('span');
+      langTag.className = 'h-lang';
+      langTag.textContent = r.lang === 'ar' ? 'AR' : 'EN';
+      const dateSpan = document.createElement('span');
+      dateSpan.textContent = formatDate(r.date);
+      left.appendChild(langTag);
+      left.appendChild(dateSpan);
+
+      const metrics = document.createElement('div');
+      metrics.className = 'h-metrics';
+      const wpmSpan = document.createElement('span');
+      wpmSpan.className = 'h-wpm';
+      wpmSpan.textContent = r.wpm + ' ' + (lang === 'ar' ? 'ك/د' : 'wpm');
+      const accSpan = document.createElement('span');
+      accSpan.textContent = r.acc + '%';
+      metrics.appendChild(wpmSpan);
+      metrics.appendChild(accSpan);
+
+      row.appendChild(left);
+      row.appendChild(metrics);
+      els.historyList.appendChild(row);
+    });
+  }
+
+  function resetSession(newLang){
+    if (typeof newLang === 'string') lang = newLang;
+    clearInterval(timerId);
+    timerId = null;
+    startTime = null;
+    timeLeft = 60;
+    finished = false;
+
+    targetText = pickText();
+    targetTextArr = Array.from(targetText);
+    applyLangStrings();
+    renderText();
+    
+    els.hiddenInput.disabled = false;
+    els.hiddenInput.value = '';
+    els.hiddenInput.maxLength = targetTextArr.length;
+    typed = [];
+    
+    updateDisplayFromTyped();
+
+    els.valTime.textContent = 60;
+    els.valWpm.textContent = 0;
+    els.valAcc.textContent = '100%';
+    els.resultBanner.classList.remove('show');
+    els.stage.classList.remove('locked');
+    
+    els.btnAr.classList.toggle('active', lang === 'ar');
+    els.btnEn.classList.toggle('active', lang === 'en');
+    els.btnPunct.classList.toggle('active', usePunct);
+
+    renderHistory();
+    els.hiddenInput.focus();
+  }
+
+  els.hiddenInput.addEventListener('input', () => {
+    if (finished) return;
+    
+    setTimeout(() => {
+      let rawVal = els.hiddenInput.value;
+      let cleanVal = rawVal.replace(/[\u200B-\u200F\u202A-\u202E\uFEFF]/g, '').replace(/\u00A0/g, ' ');
+      
+      typed = Array.from(cleanVal);
+      
+      if (!startTime && typed.length > 0) startTimer();
+      
+      updateDisplayFromTyped();
+      computeLiveStats();
+      
+      if (typed.length === targetTextArr.length){
+        endSession();
+      }
+    }, 0);
+  });
+
+  els.stage.addEventListener('click', () => {
+    if (!finished) els.hiddenInput.focus();
+  });
+
+  els.btnAr.addEventListener('click', () => { if (lang !== 'ar') resetSession('ar'); });
+  els.btnEn.addEventListener('click', () => { if (lang !== 'en') resetSession('en'); });
+  
+  els.btnPunct.addEventListener('click', () => {
+    usePunct = !usePunct;
+    resetSession();
+  });
+
+  els.restartBtn.addEventListener('click', () => resetSession());
+
+  resetSession('ar');
+})();
+</script>
+</body>
+</html>
